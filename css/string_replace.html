@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>replace()메소드 사용</h1>
+    <p id="demo">Please visit Microsoft!</p>
+    <script>
+        let text = document.getElementById("demo").innerHTML;
+        document.getElementById("demo").innerHTML = text.replace("Microsoft", "W3Schools");
+        // 대소문자가 일치된 것만 바꾼다 (대소문자 구분)
+    </script>
+</body>
+</html>

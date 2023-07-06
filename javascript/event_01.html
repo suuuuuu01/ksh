@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getTime() {
+            document.getElementById('demo2').innerHTML = Data();
+        }
+    </script>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <button type="button" onclick="document.getElementById('demo1').innerHTML = Date()">시간읽어오기</button>
+    <button type="button" onclick="getTime()">시간 읽어오기2</button>
+    <button type="button" onclick="this.innerHTML = Date()">시간 읽어오기3</button>
+</body>
+</html>
+
+두 번째 안 됨

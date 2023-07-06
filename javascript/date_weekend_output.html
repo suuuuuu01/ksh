@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>현재 날짜의 요일을 출력하기</h1>
+    <p id="demo"></p>
+    <script>
+        const weekends = ["일요일","월요일","화요일","수요일","목요일","금요일","토요일"];
+        const d = new Date();
+        let weekend = weekends[d.getDay()]; // d.getDay() :3
+        document.getElementById("demo").innerHTML = weekend;
+    </script>
+</body>
+</html>

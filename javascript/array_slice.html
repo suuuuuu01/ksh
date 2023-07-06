@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>부분배열 추출하기</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        const fruit = ["바나나", "오렌지", "레몬", "사과", "망고"];
+        document.getElementById("demo1").innerHTML = "작업전:" + fruit;
+
+        citrus = fruit.slice(1);  // 오렌지, 레몬, 사과, 망고
+        document.getElementById("demo2").innerHTML = citrus;
+
+        document.getElementById("demo3").innerHTML = "작업후:" + fruit;
+        //  slice()메소드 작업 이전과 이후에 fruits 배열에 영향을 주지 않음
+    </script>
+</body>
+</html>

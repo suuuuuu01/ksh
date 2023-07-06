@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>backtick `사용</h1>
+    <p id="demo1"></p> 
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        /*
+        백틱(`) 기호 안에 작은따옴표, 큰따옴표, 변수 및 연산 가능
+        */
+        
+        let text = `He's "jonny"`;
+        document.getElementById("demo1").innerHTML = text;
+
+        let firstName + "John";
+        let lalstName + "Doe";
+
+        // text = "Welcone" + firstName + "," + lalstName + "!"
+        text = `Welcone ${firstName}, ${firstname} ${lastName}`;
+
+        document.getElementById("demo2").innerHTML = text;
+
+        let price = 10;
+        let VAT = 0.25;
+        let total = `Total: ${(price * (1 + VAT)).toFixed(2)};  // toFixed 소수점 둘째자리까지 계산, 백틱 사용해 문자열 표현가능
+
+        document.getElementById("demo3").innerHTML = total;
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>조건문: if ~ else 문</h1>
+    <p id="demo"></p>
+    <script>
+        const d = new Date(); // 현재 날짜와 시간이 d(date객체 d)에 저장됨
+        let greeting = ""; 
+        // if~else 문
+        if(d.getHours() < 12) {
+            greeting = "즐거운 하루입니다"
+        }else {
+        greeting = "오늘도 수고하셨습니다"
+        }
+
+        document.getElementById("demo").innerHTML = greeting 
+    </script>
+</body>
+</html>
+

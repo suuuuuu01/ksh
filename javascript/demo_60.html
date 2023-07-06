@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>국어, 영어, 수학 3개의 과목 합계, 평균을 구하는 함수 생성하기</h1>
+    <h3>1번째 학생점수</h3>
+    <p id="tot_result1"></p>
+    <p id="avg1_result1"></p>
+    <p id="avg2_result1"></p>
+    <h3>2번째 학생점수</h3>
+    <p id="tot_result2"></p>
+    <p id="avg1_result2"></p>
+    <p id="avg2_result2"></p>
+    <script>
+        function tot(kor, eng, mat) {
+            return kor + eng + mat;
+        }
+
+        function avg1(kor, eng, mat) {
+            return (kor + eng + mat) / 3; 
+        }
+
+        function avg2(kor, eng, mat) {
+            let total = tot(kor, eng, mat); //tot()함수 재사용
+            return total / 3;
+        }
+
+        // 1번째 학생점수
+        let kor, eng, mat;
+        kor = 79;
+        eng = 85;
+        mat = 78;
+
+        // 2번째 학생점수
+        let kor2, eng2, mat2;
+        kor2 = 90;
+        eng2 = 87;
+        mat2 = 87;
+
+        document.getElementById("tot_result1").innerHTML = tot(kor, eng, mat);
+        document.getElementById("avg1_result1").innerHTML = avg1(kor, eng, mat);
+        document.getElementById("avg2_result1").innerHTML = avg2(kor, eng, mat);
+
+        document.getElementById("tot_result2").innerHTML = tot(kor2, eng2, mat2);
+        document.getElementById("avg1_result2").innerHTML = avg1(kor2, eng2, mat2);
+        document.getElementById("avg2_result2").innerHTML = avg2(kor2, eng2, mat2);
+
+        
+    </script>
+</body>
+</html>
+
+

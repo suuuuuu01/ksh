@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>개인정보를 object으로 저장하기</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <script>
+        // name이름, age나이, addr주소
+        // 1.변수를 이용하는 방식
+        let name = "홍길동";
+        let age = 100;
+        let addr = "창동";
+        document.getElementById("demo1").innerHTML =
+        "이름은?" + name +"나이는?" + age + "주소는?" + addr;
+
+        // 2.object를 이용하는 방식 person객체. 속성: name, age, addr
+        const person = {name: "홍길동", age: 100, addr: "창동"};
+        document.getElementById("demo2").innerHTML = 
+        "사람 이름은?" + person.name + "사람 나이는?" + person.age + "사람 주소는?" + person.addr;
+
+        person.age = 500; // 값 변경하기
+        person["addr"] = "홍은동";
+
+        document.getElementById("demo3").innerHTML = 
+        "사람 이름은?" + person.name + "사람 나이는?" + person.age + "사람 주소는?" + person.addr;
+
+    </script>
+</body>
+</html>

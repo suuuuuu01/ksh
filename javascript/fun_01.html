@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수 선언하기- 두 수의 합 구하기</h1>
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+    
+    <script>
+        // 변수선언: 데이터를 보관하는 기억장소를 생성하고, 기억장소를 가리키는 이름을 만듦
+        //  2개의 변수에 저장된 값을 더하는 기능 (즉, 두 수의 더한 기능)
+        let x, y, z;
+        x = 10;
+        y = 20;
+
+        z = x+y; // z = 10+20;
+        document.getElementById("result1").innerHTML = z;
+        // 함수 정의(선언), 두 수를 더하는 기능
+        function add(a, b) {
+            return a + b; // return 키워드: 함수를 종료하고 반환값을 호출하는 곳으로 보내는 기능
+        }
+
+        document.getElementById("result2").innerHTML = add(10,20);
+        document.getElementById("result3").innerHTML = add(5,10);
+    </script>
+</body>
+</html>

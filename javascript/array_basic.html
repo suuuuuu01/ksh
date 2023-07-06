@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열 사용하기</h1> 
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <script>
+        /*
+        배열? 동일한 종류의 데이터를 하나의 이름으로 관리하는 기억장소
+        하위요소는 배열[],.,.,.,.. 순서로 가리킨다
+        */
+        const cars = ["Volvo", "Fiat", "BMW"];
+        document.getElementById("demo1").innerHTML = cars; // 배열전체
+        document.getElementById("demo2").innerHTML = cars[0]; // 배열 첫번째 요소
+        document.getElementById("demo3").innerHTML = cars[1]; // 배열 두번째 요소
+        document.getElementById("demo4").innerHTML = cars[2]; // 배열 세번째 요소
+
+        document.getElementById("demo5").innerHTML = cars[3]; // 존재하지 않지만, 변수처리가 되어 undefined로 해석
+    </script>
+</body>
+</html>

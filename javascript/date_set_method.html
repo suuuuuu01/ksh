@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>날짜, 시간 변경하기</h1>
+    <p id="demo"></p>
+    <script>
+        // 2025년 8월 10일 10시 50분
+        const d = new Date("2025-08-10");
+        d.setFullYear(2025,10); // 2023 -> 2024
+        d.setMonth(7);
+        d.setDate(10);
+        d.setHours(10);
+        d.setMinutes(50);
+        document.getElementById("demo").innerHTML = 
+        `${d.getFullYear()}년 ${d.getMonth()+1}월 ${d.getDate()}일 ${d.getHours()}시 ${d.getMinutes()}분`;
+    </script>
+</body>
+</html>

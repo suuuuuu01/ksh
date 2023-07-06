@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열 합치기 : concat()</h1>
+    <p id="demo"></p>
+    <script>
+        const myGirls = ["강부자", "강수지"];
+        const myBoys = ["이서진", "나영석", "이명한"];
+        const myArr = ["자바", "스프링", "오라클"];
+        const myArr2 = ["HTML5", "CSS3"];
+        const myChildren = myGirls.concat(myBoys, myArr, "myArr2", "홍길동");
+
+        document.getElementById("demo").innerHTML = myChildren;
+    </script>    
+</body>
+</html>

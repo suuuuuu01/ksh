@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>"5" + 2 + 3 의 결과는?</h1>
+    <p id="demo"></p>
+    <script>
+        // 문자열(string) 형변환 발생. 타입이 string(문자열)로 일치가 되어 진행된다 (중요!)
+        let x = "5" + 2 + 3 // "5" + "2" + 3 -> "52" + 3 -> "52" + "3" -> "523"
+        document.getElementById("demo").innerHTML = x;
+    </script>
+</body>
+</html>

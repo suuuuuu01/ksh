@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>비교 연산자 예제</h1>
+    <p id="demo"></p>
+    <script>
+        // 아스키코드값으로 비교가 이루어진다 0 ~ 127 범위
+        // https://shaeod.tistory.com/228 (아스키코드표)
+        // 유니코드 : 0~ 65535범위
+        let text1 = "20";  // 문자열로 표시되면 코드값으로 비교한다
+        let text2 = "5";  // 
+        let result = text1 < text2;   // true or false 값
+        document.getElementById("demo").innerHTML = "20이 5보다 작습니까?" + result;
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>배열요소 삭제 및 삽입하기 - splice()</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+        const fruit = ["바나나", "오렌지", "사과", "망고"];
+        document.getElementById("demo1").innerHTML = fruit;
+        // 인덱스 2위치에서 0개를 제거하고, 배열을 삽입한다
+        fruit.splice(2,0,"레몬", "키위");  // fruits 배열에 영향을 줌
+        document.getElementById("demo2").innerHTML = fruit;
+    </script>
+</body>
+</html>

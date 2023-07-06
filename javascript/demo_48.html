@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>증가 연산자 : ++</h1>
+    <p id="demo"></p>
+    <script>
+        let x = 5;
+        let z;
+        // 변수 뒤에 ++ 후위형 증가연산자
+        // x변수의 값 5를 먼저 읽어오고, 나중에 x변수에 +1을 하게된다
+        z = x++ + 5;   // x = x + 5
+
+        // 결과 10
+        document.getElementById("demo").innerHTML = z;
+    </script>
+</body>
+</html>

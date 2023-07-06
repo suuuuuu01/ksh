@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수 선언하기 - 두 수의 차이를 구하는 기능</h1>
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+    <script>
+        let x, y, z;
+        x = 10;
+        y = 20;
+        z = x - y;
+
+        document.getElementById("result1").innerHTML = z;
+
+        function sub(a,b) {
+            return a - b;
+        }
+
+        document.getElementById("result2").innerHTML = sub(10,20);
+        document.getElementById("result3").innerHTML = sub(10,5);
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fn_length() {
+            let userid = document.getElementById("userid"); // <input type="text" id="userid">
+            document.getElementById("demo2").innerHTML = userid.value.length;
+        }
+    </script>
+</head>
+<body>
+    <h1>문자열 길이 : length</h1>
+    <p id="demo1"></p>
+    <input type="text" id="userid">
+    <button type="button" onclick="fn_length()">아이디 길이</button>
+    <p id="demo2"></p>
+    <script>
+        // text 변수에 저장된 데이터 종류(string, number, boolen)에 따라 지원하는 명령어가 각각 다르다
+        /*
+        객체는 명령어로 속성과 메서드를 제공한다
+        let text = 100;  number 데이터 타입 변수가 되어 명령어가 존재한다
+        let text = "홍길동"; string 데이터 타입 변수가 되어 명령어가 존재한다
+        let text = true; boolean 데이터 타입 변수가 되어 명령어가 존재한다
+        */
+        let text = "0123456789" // string객체
+        document.getElementById("demo").innerHTML = text.length;
+    </script>
+</body>
+</html>

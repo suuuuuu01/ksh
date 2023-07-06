@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>논리연산자 AND : &&, OR: ||, NOT : !</h1>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+    <p id="demo4"></p>
+    <script>
+        /*
+        || : 논리or연산자.  좌,우측의 값이 1개만이라도 true이면 결과가 true가 되는 특징
+        */
+        let x = 6;  // 초기값
+        let y = 3;
+        document.getElementById("demo1").innerHTML = (x == 5 || y == 5); // false || false = false
+        document.getElementById("demo2").innerHTML = (x == 6 || y == 0); // true || false = true
+        document.getElementById("demo3").innerHTML = (x == 0 || y == 3); // false || true = true
+        document.getElementById("demo4").innerHTML = (x == 6 || y ==3); // true || true = true
+    </script>
+</body>
+</html>

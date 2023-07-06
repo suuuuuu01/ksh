@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <style>
+        input[type=text].txt1{
+            padding: 2px 5px;
+            border: 2px solid red;
+        }
+        input[type=text]:focus.txt1{
+            background-color: yellow;
+        }    
+        body {
+            
+        }
+        h1 {
+            width: 70%;
+            margin: auto;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+        }
+
+        th {
+            text-align: left;
+            width: 15%;
+            padding: 5px 10px;
+            background-color: dimgray;
+            color: white;
+        }
+
+        td {
+            padding: 5px 10px;
+            width: 85%;
+        }
+
+        p.submit {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            text-align: center;
+        }
+        /* input [type="button"] input [type=reset] */
+        /* 전송, 취소 */
+        input.btn1 {
+            border-radius: 12px;
+            padding: 11px 15px;
+            text-align: center;
+            background-color: blue;
+            color: white;
+        }
+        /* 인증, 주소 */
+        input.btn2 {
+            background-color: yellow;
+            border: 15px;
+        }
+        select.select1 {
+            width: 110px;
+            background-color: pink;
+            border-radius: 4px;
+            padding: 3px 5px;
+            border: none;
+        }
+        </style>
+</head>
+<body>
+    <h1>기본정보</h1>
+    <form>
+        <table>
+            <tr>
+                <th>이름</th>
+                <td>
+                    <input type="text" class="txt1">
+                </td>
+            </tr>
+            <tr>
+                <th>아이디</th>
+                <td>
+                    <input type="text" class="txt1">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호</th>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <th>비밀번호 확인</th>
+                <td>
+                    <input type="text">
+                </td>
+            </tr>
+            <tr>
+                <th>생년월일/성별</th>
+                <td>
+                    <input type="date">
+                    <input type="radio">남자
+                    <input type="radio">여자
+                </td>
+            </tr>
+            <tr>
+                <th>이메일</th>
+                <td>
+                    <p>
+                        <input type="text">@<input type="text">
+                        <select class="select1">
+                            <option>메일주소선택</option>
+                            <option>gmail.com</option>
+                            <option>naver.com</option>
+                            <option>daum.net</option>
+                        </select>
+                        <input type="button" value="메일인증선택" class="btn2">
+                    </p>
+                    <p>
+                        <input type="text">
+                        <input type="button" value="인증확인" class="btn2">
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>연락처</th>
+                <td>
+                    <p>
+                        휴대전화 
+                        <select class="select1">
+                            <option>선택</option>
+                        </select>
+                        <input type="text">-<input type="text">
+                    </p>
+                    <p>
+                        일반전화 
+                        <select class="select1">
+                            <option>선택</option>
+                        </select>
+                        <input type="text">-<input type="text">
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>우편번호</th>
+                <td>
+                    <input type="text">
+                    <input type="button" value="주소검색" class="btn2">
+                </td>
+            </tr>
+            <tr>
+                <th>주소</th>
+                <td>
+                    <p>
+                        <input type="text">
+                    </p>
+                    <p>
+                        <input type="text">
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th>정보수신 여부</th>
+                <td>
+                    서비스 및 이벤트소식을 <input type="checkbox"> Email로 수신하겠습니다.
+                    <input type="checkbox"> SMS로 수신하겠습니다.
+
+                </td>
+            </tr>
+        </table>
+        <p class="submit">
+            <input type="button" value="전송" class="btn1">
+            <input type="reset" value="취소" class="btn1">
+        </p>
+    </form>
+</body>
+</html>

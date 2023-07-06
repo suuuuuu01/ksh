@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function hello(name) {
+            // 웹브라우저 화면에 출력하는 기능: writeln
+            document.writeln(name + "님 방가방가");
+        }
+    </script>
+</head>
+<body>
+    <h1>이름을 매개변수로 받아 인사하는 함수 생성</h1>
+    <script>
+        hello("홍길동");
+        hello("손흥민");
+    </script>
+    <button type="button" onclick="hello('이순신')">이순신</button>
+</body>
+</html>

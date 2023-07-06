@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수 안의 로컬변수 (지역변수)</h1>
+    <p id="demo1"></p>
+    <script>
+    function myFuntion() {
+        // let carName, text 변수는 지역변수
+        // 지역변수는 함수범위를 벗어난 곳에서는 사용이 불가능
+        let carName = "Volvo";
+        let text = "차이름은" + carName + "입니다";
+        document.getElementById("demo1").innerHTML = text;
+    }
+
+    carName = "현대자동차"; // 사용이 가능한 것처럼 보이나 새로운 변수가 만들어지고 사용한 것이다 사용하지 않기
+
+    myFuntion();
+    </script>
+</body>
+</html>
