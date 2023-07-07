@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>foreach ~ array</h1>
+    <p id="demo"></p>
+    <script>
+        const numbers = [45, 4, 9, 16, 25];
+
+        let txt = "";
+        // 콜백함수를 파라미터로 사용
+        numbers.forEach(myFunction);
+        document.getElementById("demo").innerHTML = txt;
+
+        // 콜백함수.forEach()메서드의 파라미터 특징에 맞게 함수를 정의해야 한다 void
+        // forEach()메서드는 리턴값이 없다는 의미도 void가 있음
+        function myFunction(value, index, array) {
+            txt += value + "<br>";
+        }
+
+    </script>
+</body>
+</html>
+

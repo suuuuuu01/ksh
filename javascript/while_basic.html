@@ -6,16 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>1~100까지의 합을 출력하라</h1>
+    <h1>while 반복문</h1>
     <p id="demo"></p>
     <script>
-        let sum = 0;
-        for(let i=1; i<=100; i++) // 세미콜론 (;) 2개 필수
-        {
-            sum += i;
+        let text = "";
+        let i = 0;
+        while(i<10) {
+            text += "<br>현재 숫자는" + i;
+            console.log(text);
+            i++;
         }
 
-        document.getElementById("demo").innerHTML = `1~100까지 합은? ${sum}`;
+        document.getElementById("demo").innerHTML = text;
     </script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>JavaScript Do While Loop</h2>
+
+    <p id="demo"></p>
+    
+    <script>
+    let text = ""
+    let i = 0;
+    
+    // 무한루프 유의할 것
+    // 조건식이 뒷부분에 있어서, 최소 한 번은 코드를 실행하고, 조건식의 상태를 확인한다
+    do {
+        text += "<br>현재 숫자는 " + i;
+        console.log(text)
+        i++;
+    }
+    while (i < 0);  
+    
+    document.getElementById("demo").innerHTML = text;
+    </script>
+</body>
+</html>
