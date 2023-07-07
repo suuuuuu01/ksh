@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>별 출력하기</h1>
+    <script>
+        document.write("<h3>정사각형 별 5개 출력하기</h3>");
+        for(let i=0; i<5; i++) {
+            document.write("*");
+        }
+        document.write("<hr>");
+
+        document.write("<h3>정사각형 별 출력</h3>")
+        for(let i=0; i<5; i++) {
+            for(let j=0; j<5; j++) {
+                document.write("*");
+            }
+
+            document.write("<br>");
+        }
+        document.write("<hr>");
+
+        document.write("<h3>삼각형 별 출력</h3>")
+        for(let i=0; i<5; i++) {
+            for(let j=0; j<=i; j++) {
+                document.write("*");
+            }
+
+            document.write("<br>");
+        }
+
+        document.write("<h3>역삼각형 별 출력</h3>")
+        for(let i=0; i<5; i++) {
+            for(let j=4; j>=i; j--) {
+                document.write("*");
+            }
+
+            document.write("<br>");
+        }
+    </script>
+</body>
+</html>
