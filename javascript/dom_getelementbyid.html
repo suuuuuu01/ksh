@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>dom access - getElementById()</h1>
+    <p id="demo"></p>
+    <script>
+        // p태그를 id속성으로 참조할 때 / document.getElementById("demo"). -> p태그 / innerText 태그 지원 X, innerHTML 태그 지원함
+        document.getElementById("demo").innerHTML = "<b>Hello</b>";
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>form태그와 하위요소 : 입력양식태그</h1>
+    <form id="joinFrm">
+        /*
+        const x = input. stextarea. tetear
+        */
+        주소 : <input type="text" name="addr" value="서울시 노원구"><br>
+        <a fref=""http://www.naver.com">네이버</a><br>
+        <input type="submit" value="회원가입">
+    </form>
+
+        <p id="demo"></p>
+        <script>
+            const x = document.forms["joinFrm"];
+            let text = "";
+            // x.length : form태그의 하위요소(태그)들에서는 a태그는 제외된다
+            for(let i=0; i<x.length; i++) {
+
+            } 
+        </script>
+    
+</body>
+</html>
