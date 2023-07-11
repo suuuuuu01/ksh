@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validation() {
+            let u_id = document.getElementById("u_id");
+            let u_pw = document.getElementById("u_pw");
+            let u_name = document.getElementById("u_name");
+            let u_addr = document.getElementById("u_addr");
+
+            // 취미체크 여부
+            let u_hobby1 = document.getElementById("u_hobby1");
+            let u_hobby2 = document.getElementById("u_hobby2");
+            let u_hobby3 = document.getElementById("u_hobby3");
+            let u_hobby4 = document.getElementById("u_hobby4");
+
+            let agree1 = document.getElementById("agree1");
+            let agree2 = document.getElementById("agree2");
+
+            // 아이디 입력값 검사
+            if(u_id.value == "") {
+                alert("아이디 입력요망");
+                u_id.focus();
+                return;
+            }
+
+            // 비밀번호 입력값 검사
+            if(u_pw.value == "") {
+                alert("비밀번호 입력요망");
+                u_pw.focus();
+                return;
+            }
+
+            // 이름 입력값 검사
+            if(u_name == "") {
+                alert("이름 입력요망");
+                u_name.focus;
+                return;
+            }
+
+            // 주소 입력값 검사
+            if(u_addr == "") {
+                alert("주소 입력요망");
+                u_addr.focus;
+                return;
+            }
+
+            // 취미체크 검사
+            let isHobbyChecked;
+            
+            if(u_hobby1.checked == "") {
+                isHobbyChecked;
+            }
+            
+            if(u_hobby2.checked == "") {
+                alert("취미를 1개 이상 체크요망");
+                return;
+            }
+
+            if(u_hobby3.checked == "") {
+                alert("취미를 1개 이상 체크요망");
+                return;
+            }
+
+            if(isHobbyChecked == "") {
+                alert("취미를 1개라도 선택요망");
+                return;
+            }
+
+            // 메일수신 여부
+            if(!agree1.checked && !agree2.checked) {
+                alert("메일 수신여부를 선택요망");
+                return;
+            }
+
+            alert("유효성 검사성공");
+    
+            document.forms[0].submit();
+
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form id="joinFrm" action="join_ok.html" method="post">
+        ID : <input type="text" id="u_id" name="u_id"><br>
+        PW : <input type="text" id="u_pw" name="u_pw"><br>
+        Name : <input type="text" id="u_name" name="u_name"><br>
+        Addr : <input type="text" id="u_addr" name="u_addr"><br>
+        hobby : 
+        <label for="u_hobby1">자바</label><input type="checkbox" id="u_hobby1" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby2">스프링</label><input type="checkbox" id="u_hobby2" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby3">오라클</label><input type="checkbox" id="u_hobby3" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby4">포트폴리오</label><input type="checkbox" id="u_hobby4" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby5">리액트</label><input type="checkbox" id="u_hobby5" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby6">Node.js</label><input type="checkbox" id="u_hobby6" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby7">mybatis</label><input type="checkbox" id="u_hobby7" name="u_hobby" class="u_hobby"><br>
+        <label for="u_hobby8">log4jdbc</label><input type="checkbox" id="u_hobby8" name="u_hobby" class="u_hobby"><br>
+        Mail agree : <label for="agree1">동의</label><input type="radio" name="agree" id="agree1"><br>
+                <label for="agree2">동의</label><input type="radio" name="agree" id="agree2"><br>
+        <input type="button" value="전송" onclick="validation()">
+
+        <!-- <label> <id> 같아야 함 -->
+    </form>
+</body>
+</html>

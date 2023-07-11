@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>입력필드의 숫자 유효성검사 : 1~10범위</h1>
+    <input type="text" id="num">
+    <input type="button" value="전송" onclick="validation()">
+    <p id="num"></p>
+    <script>
+        // 태그의 내용이 숫자가 아니라 텍스트(string)이다
+        // 입력필드의 값도 텍스트(string)
+
+        // 문자열(string)-> 숫자(number) 형변환(Casting)
+
+        function validation() {
+            let num = document.getElementById("num").value;
+
+            // console.log("num", typeof num);
+            let text = "";
+            // isNaN(num): num매개변수가 숫자가 아닌지를 체크하는 기능. 숫자가 아니면 true
+            // x가 string 데이터타입이지만, 비교 시 1 때문에 number 데이터타입으로 형변환된다.
+            // 숫자형변환: Number(num), parseInt(num)
+            if(isNaN(num) || x < 1 || x > 10) {
+                text = "숫자가 아니거나 1~10범위의 값이 아닙니다.";
+            }else {
+                text = "정상적인 값입니다.";
+            }            
+            document.getElementById("demo").innerHTML = text;
+        }
+
+    </script>
+</body>
+</html>
+
+X

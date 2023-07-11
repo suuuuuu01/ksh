@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<style>
+#container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background: yellow;
+}
+#animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background-color: red;
+}
+</style>
+<body>
+
+<p><button onclick="myMove()">Click Me</button></p> 
+
+<div id ="container">
+    <div id ="animate"></div>
+</div>
+
+<script>
+// 함수 내부에 함수가 정의되어 있는 예제. myMove()함수 안에 frame()함수가 존재함.
+function myMove() {
+    let id = null;
+    const elem = document.getElementById("animate");   
+    let pos = 0;
+    clearInterval(id);
+    id = setInterval(frame, 5); // frame에 () 제외되어 있다.
+    // 함수 내에 함수를 쓸 때는 설정의 의미이기 때문에 괄호 넣지 않음.
+    function frame() {
+    if (pos == 350) {
+    clearInterval(id);
+    } else {
+        pos++; 
+        elem.style.top = pos + "px"; 
+        elem.style.left = pos + "px"; 
+    }
+    }
+}
+</script>
+
+</body>
+</html>
