@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>dom event listener</h1>
+    <button type="button" id="myBtn">클릭</button>
+    <p id="demo"></p>
+    <script>
+        // 이벤트 등록
+        // document.getElementById("myBtn").onclick = 자바스크립트 코드;
+
+        // 메서드 //onclick X, click // 이벤트를 여러 개 추가 가능
+        document.getElementById("myBtn").addEventListener("click", displayDate);
+        // document.getElementById("myBtn").addEventListener("mouseover", displayDate);
+        // document.getElementById("myBtn").addEventListener("mouseenter",displayMessage);
+
+        function displayDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+
+        function displayMessage() {
+            alert("이벤트");
+        }
+    </script>
+</body>
+</html>
