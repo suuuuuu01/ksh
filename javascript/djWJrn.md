@@ -41,3 +41,16 @@ type 버튼 클릭됐을 때 onsubmit이 인식해 동작시킴
 <p style="color:red;">자바</p>
 -선택자
 -css파일
+
+개발환경구축 -자바
+자바S/W설치 - JDK설치 버전1.8 or 1.11 -유료:오라클JDK, 무료:open JDK
+JDK: 자바 개발 및 학습을 위한 S/W
+-Java Development Kit
+
+editor: IDE tool - 이클립스 (무료)
+
+path 설정: 폴더 위치
+자바실행파일 관련 설정: JAVA_HOME  C:\Program Files\Java\jdk1.8.0_271
+path 설정: %JAVA_HOME%\bin
+
+cmd명령프롬프트 - path 설정 확인테스트
