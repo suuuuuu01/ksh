@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript String Methods</h1>
+<p>Search a string for "W3Schools", and display the position of the match:</p>
+
+<p id="demo"></p>
+
+<script>
+    /*
+    정규식 문법구조: /정규식문자열/플래그 
+    */
+let text = "Visit W3Schools!"; 
+// let n = text.search("W3Schools"); //일반문자열
+let n = text.search(/W3schools/i); //정규식문자열, i플래그 : 대소문자 구분 X
+document.getElementById("demo").innerHTML = n;
+</script>
+
+</body>
+</html>

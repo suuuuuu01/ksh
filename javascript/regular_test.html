@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>정규식 test(), match()메서드 사용법</h1>
+    <p id="p01">The best things in life are free!</p>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <script>
+        let text = document.getElementById("p01").innerHTML;
+        let re = /best/;
+
+        document.getElementById("demo").innerHTML = re.test(text); // boolean
+        document.getElementById("demo2").innerHTML = text.match(re); // array
+
+        text.replace()
+    </script>
+</body>
+</html>
