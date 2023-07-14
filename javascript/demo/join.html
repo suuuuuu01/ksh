@@ -76,7 +76,7 @@
             function sendit() {
 
                 // 정규식
-                let reg_name = RegExp(/^[가-힣]{2,10}$/);
+                let reg_name = RegExp(/^[가-힣]$/);
 
                 let reg_id = RegExp(/^[a-zA-Z]+[0-9a-zA-Z]{5,15}$/);
 
@@ -127,7 +127,7 @@
                     return;
                 }
 
-                email.value = email1.value + email2.value; // <input type = "hidden" id ="email">  
+                email.value = email1.value + "@" + email2.value; // <input type = "hidden" id ="email">  
 
                 if(!empty_validate(email1, "메일 입력요망")) return;
                 if(!empty_validate(email2, "메일 입력요망")) return;
@@ -148,7 +148,7 @@
                 let rev_email = document.getElementById("rev_email");
                 let rev_sms = document.getElementById("rev_sms");
 
-                it(!rev_email.checked) {
+                if(!rev_email.checked) {
                     alert("메일 수신여부 체크를 하세요");
                     return;
                 }
@@ -160,7 +160,7 @@
 
                 alert("유효성 검사 성공");
 
-                document.getElementById("join_form").submit();
+                // document.getElementById("join_form").submit();
 
             }
 
@@ -234,10 +234,10 @@
                     <p>
                         <input type="text" id="email1">@<input type="text" id="email2">
                         <select class="select1" id="email3" name="email">
-                            <option value="gmail.com">메일주소선택</option>
-                            <option value="naver.com">gmail.com</option>
-                            <option value="daum.com">naver.com</option>
-                            <option>daum.net</option>
+                            <option>메일주소선택</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="daum.com">daum.net</option>
                         </select>
                         <input type="hidden" id="email"><!-- hidden필드는 실제 서버로 전송할 목적 -->
                         <input type="button" value="메일인증선택" class="btn2">
@@ -253,12 +253,13 @@
                 <td>
                     <p>
                         <!-- value = "" 기본값으로 가지고있어 생략 가능 -->
-                        <input type="text" id="htel2" value="">-<input type="text" id="htel3">
+                        
                         <select class="htel1" id="htel3" name="htel">
                             <option value="">지역번호 선택</option>
                             <option value="02">서울</option>
                             <option value="062">광주</option>
                             <option value="052">대전</option>
+                            <input type="text" id="htel2" value="">-<input type="text" id="htel3">
                     </p>
                 </td>
             </tr>
@@ -298,16 +299,24 @@
     <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
     </div>
     
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></scrip>
     <script>
-            // 이벤트 리스너작업
-            document.getElementById("email3").addEventListener("change", emailSelect);
+        // 이벤트 리스너작업
+        document.getElementById("email3").addEventListener("change", emailSelect);
 
-            function emailSelect() {
-                let email2 = document.getElementById("email2");
-                email2.value = document.getElementById("email3").value;
-            }
+        function emailSelect() {
+            let email2 = document.getElementById("email2");
+            email2.value = document.getElementById("email3").value;
+        }
 
+        document.getElementById("htel3").addEventListener("change", htelSelect);
+
+        function htelSelect() {
+            let htel2 = document.getElementById("htel2");
+            htel2.value = document.getElementById("htel3").value;
+        }
+    </script>    
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
         // 우편번호 찾기 화면을 넣을 element
         var element_layer = document.getElementById('layer');
     
@@ -368,14 +377,14 @@
                 width : '100%',
                 height : '100%',
                 maxSuggestItems : 5
-            .embed(element_layer);
+            }).embed(element_layer);
     
             // iframe을 넣은 element를 보이게 한다.
             element_layer.style.display = 'block';
     
             // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
             initLayerPosition();
-        
+        }
     
         // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
         // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
@@ -394,5 +403,3 @@
             element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
         }
     </script>
-    </body>
-</html>
