@@ -181,7 +181,7 @@
             re : 정규식개체, target : 정규식 검사필드 태그참조, data : 필드의 값, msg : 유효성 검사 메세지
             */
             function reg_validate(re, target, msg) {
-                if(!re.test(target.value)); {
+                if(!re.test(target.value)) {
                     target.focus();
                     alert(msg);
                     return false;
@@ -193,6 +193,8 @@
 </head>
 <body>
     <h1>기본정보</h1>
+    <!-- form 태그 속성내용 https://developer.mozila.org/ko/docs/Learn/Forms/How_to_structure_a_web_form -->
+    <!-- <input type="file">을 사용 시, <form enctype="multipart/form=data">속성 사용해야 함 -->
     <!-- enctype= 값 부분 기본값이라 생략 가능  multi파일첨부 -->
     <form id="join_form" action="./join_ok.html" method="post" enctype="application/x-www-form-urlencoded">
         <table>
