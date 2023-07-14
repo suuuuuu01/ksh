@@ -84,8 +84,6 @@
 
                 let reg_birth = RegExp(/^\d{6}$/);
 
-                let reg_phone = RegExp(/^\d{3}-\d{4}-\d{4}$/);
-
                 let reg_email = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 
                 // 입력필드 태그참조 변수
@@ -98,10 +96,24 @@
                 let email = document.getElementById("email");
                 let email1 = document.getElementById("email1");
                 let email2 = document.getElementById("email2");
+                let auth_confirm  = document.getElementById("auth_confirm");
+                let sTel = document.getElementById("sTel");
+                let sTel1 = document.getElementById("sTel1");
+                let sTel2 = document.getElementById("sTel2");
+                let sTel3 = document.getElementById("sTel3"); 
+                let sample2_postcode = document.getElementById("sample2_postcode");
+                let sample2_address = document.getElementById("sample2_address");
+                let sample2_detailAddress = document.getElementById("sample2_detailAddress");
 
                 if(!empty_validate(u_name, "이름 입력요망")) return;
+                if(!reg_validate(reg_name, u_name, "한글만 입력가능")) return;
+
                 if(!empty_validate(u_id, "아이디 입력요망")) return;
+                if(!empty_validate(reg_id, u_id, "아이디는 영문, 숫자만 사용가능")) return;
+
                 if(!empty_validate(u_pw, "비밀번호 입력요망")) return;
+                if(!empty_validate(reg_pw, u_pw, "비밀번호는 영문 소문자, 숫자, 특수문자를 혼합해 사용가능")) return;
+
                 if(u_pw.value != u_repw.value) {
                     alert("비밀번호 확인이 틀립니다.");
                     u_repw.focus();
@@ -117,9 +129,39 @@
 
                 email.value = email1.value + email2.value; // <input type = "hidden" id ="email">  
 
-                if(!empty_validate(email, "메일 입력요망")) return;
+                if(!empty_validate(email1, "메일 입력요망")) return;
+                if(!empty_validate(email2, "메일 입력요망")) return;
+                if(!reg_validate(reg_email, email, "이메일 형식이 다릅니다.")) return;
 
-                return;
+                if(!empty_validate(auth_confirm, "인증코드 입력요망")) return;
+
+                if(!empty_validate(sTel, "휴대전화 입력요망")) return;
+
+                if(!empty_validate(hTel1, "일반전화 선택요망")) return;
+                if(!empty_validate(hTel1, "일반전화 선택요망")) return;
+                if(!empty_validate(hTel1, "일반전화 선택요망")) return;
+
+                if(!empty_validate(sample2_postcode, "우편번호 입력요망")) return;
+                if(!empty_validate(sample2_address, "기본주소 입력요망")) return;
+                if(!empty_validate(sample2_detailAddress, "나머지주소 입력요망")) return;
+
+                let rev_email = document.getElementById("rev_email");
+                let rev_sms = document.getElementById("rev_sms");
+
+                it(!rev_email.checked) {
+                    alert("메일 수신여부 체크를 하세요");
+                    return;
+                }
+
+                if(!rev_sms.checked) {
+                    alert("SMS수신여부 체크를 하세요");
+                    return;
+                }
+
+                alert("유효성 검사 성공");
+
+                document.getElementById("join_form").submit();
+
             }
 
             // 해당 필드엥 데이터입력 유무 체크
@@ -138,19 +180,21 @@
             /*
             re : 정규식개체, target : 정규식 검사필드 태그참조, data : 필드의 값, msg : 유효성 검사 메세지
             */
-            function reg_validate(re, target, data, msg) {
+            function reg_validate(re, target, msg) {
                 if(!re.test(target.value)); {
                     target.focus();
                     alert(msg);
                     return false;
                 }
+                return true;
             }
 
         </script>
 </head>
 <body>
     <h1>기본정보</h1>
-    <form>
+    <!-- enctype= 값 부분 기본값이라 생략 가능  multi파일첨부 -->
+    <form id="join_form" action="./join_ok.html" method="post" enctype="application/x-www-form-urlencoded">
         <table>
             <tr>
                 <th>이름</th>
@@ -167,13 +211,13 @@
             <tr>
                 <th>비밀번호</th>
                 <td>
-                    <input type="text" id="u_pw" name="u_pw" class="txt1">
+                    <input type="password" id="u_pw" name="u_pw" class="txt1">
                 </td>
             </tr>
             <tr>
                 <th>비밀번호 확인</th>
                 <td>
-                    <input type="text" id="u_repw" name="u_repw">
+                    <input type="password" id="u_repw" name="u_repw">
                 </td>
             </tr>
             <tr>
@@ -195,31 +239,26 @@
                             <option value="daum.com">naver.com</option>
                             <option>daum.net</option>
                         </select>
-                        <input type="hidden" id="email"><!-- 합친 메일을 하나로 관리 -->
+                        <input type="hidden" id="email"><!-- hidden필드는 실제 서버로 전송할 목적 -->
                         <input type="button" value="메일인증선택" class="btn2">
                     </p>
                     <p>
-                        <input type="text">
+                        <input type="text" id="auth_confirm">
                         <input type="button" value="인증확인" class="btn2">
                     </p>
                 </td>
             </tr>
             <tr>
-                <th>연락처</th>
+                <th>전화</th>
                 <td>
                     <p>
-                        휴대전화 
-                        <select class="select1">
-                            <option>선택</option>
-                        </select>
-                        <input type="text">-<input type="text">
-                    </p>
-                    <p>
-                        일반전화 
-                        <select class="select1">
-                            <option>선택</option>
-                        </select>
-                        <input type="text">-<input type="text">
+                        <!-- value = "" 기본값으로 가지고있어 생략 가능 -->
+                        <input type="text" id="htel2" value="">-<input type="text" id="htel3">
+                        <select class="htel1" id="htel3" name="htel">
+                            <option value="">지역번호 선택</option>
+                            <option value="02">서울</option>
+                            <option value="062">광주</option>
+                            <option value="052">대전</option>
                     </p>
                 </td>
             </tr>
@@ -243,8 +282,8 @@
             <tr>
                 <th>정보수신 여부</th>
                 <td>
-                    서비스 및 이벤트소식을 <input type="checkbox"> Email로 수신하겠습니다.
-                    <input type="checkbox"> SMS로 수신하겠습니다.
+                    서비스 및 이벤트소식을 <input type="checkbox" id="rev_email"> Email로 수신하겠습니다.
+                    <input type="checkbox" id="rev_sms"> SMS로 수신하겠습니다.
 
                 </td>
             </tr>
@@ -329,14 +368,14 @@
                 width : '100%',
                 height : '100%',
                 maxSuggestItems : 5
-            }).embed(element_layer);
+            .embed(element_layer);
     
             // iframe을 넣은 element를 보이게 한다.
             element_layer.style.display = 'block';
     
             // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
             initLayerPosition();
-        }
+        
     
         // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
         // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
