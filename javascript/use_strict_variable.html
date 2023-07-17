@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>use strict : 엄격모드, 변수</h1>
+    <p id="demo"></p>
+
+    <script>
+        /*
+        자바스크립트 코드는 엄격모드(use strict)와 비엄격모드(non_use strict)로 구분한다.
+        엄격모드 선언 시, 맨 첫 줄에 해야 한다.
+        */
+        // "use strict";
+        x = 3.14; // 변수를 선언하지 않고 사용하여, 에러처리가 된다.
+        document.getElementById("demo").innerHTML = x;
+    </script>
+</body>
+</html>

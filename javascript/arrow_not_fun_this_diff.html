@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <script>
+        // 일반함수(익명함수 포함)에서, window or document객체로 이벤트 등록 시
+        // this의 참조하는 대상이 다르다.
+    let hello = "";
+    
+    hello = function() {
+        document.getElementById("demo1").innerHTML = this;
+    }
+
+    window.addEventListener("load", hello); //this는 window객체를 참조함
+
+    let hello2 = "";
+    hello2 = function() {
+        document.getElementById("demo2").innerHTML = this;
+    }
+    // this는 button태그를 참조함. 클릭한 태그 자신을 this로 사용할 경우에는 화살표함수로 사용하지 말 것 (중요)
+    document.getElementById("btn").addEventListener("click", hello2);
+</script>
+</body>
+</html>

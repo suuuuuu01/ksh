@@ -67,13 +67,13 @@
 
             if(isHobbyChecked) {
                 alert("취미를 1개라도 선택요망");
-                return false;
+                return false; // 함수를 호출한 쪽에 false를 반환값으로 돌려준다. flase를 받는 쪽은 전송이 중지된다.
             }
 
             // 메일수신 여부
             if(!agree1.checked && !agree2.checked) {
                 alert("메일 수신여부를 선택요망");
-                return false;
+                return false; // 함수를 호출한 쪽에 false를 반환값으로 돌려준다. flase를 받는 쪽은 전송이 중지된다.
             }
 
             alert("유효성 검사성공");
@@ -93,7 +93,7 @@
                 return false;
             }
 
-            return true;  // 전송
+            return true;  // 전송. // 함수를 호출한 쪽에 true를 반환값으로 돌려준다. true를 받는 쪽은 전송이 중지된다.
 
         }
         
@@ -117,7 +117,7 @@
         <label for="u_hobby8">log4jdbc</label><input type="checkbox" id="u_hobby8" name="u_hobby" class="u_hobby"><br>
         Mail agree : <label for="agree1">동의</label><input type="radio" name="agree" id="agree1"><br>
                 <label for="agree2">동의</label><input type="radio" name="agree" id="agree2"><br>
-        <input type="submit" value="전송">
+        <input type="submit" value="전송"> <!--<input type="submit"> onclick 이벤트는 사용하지 않는다(주의)-->
 
         <!-- <label> <id> 같아야 함 -->
     </form>

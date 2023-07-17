@@ -75,18 +75,28 @@
 
             function sendit() {
 
-                // 정규식
-                let reg_name = RegExp(/^[가-힣]{2,10}$/);
+                // 정규식 객체생성
+                let reg_name = RegExp(/^[가-힣]{2,10}$/); // 한글만 입력가능, 2~10 글자범위
 
-                let reg_id = RegExp(/^[a-zA-Z]+[0-9a-zA-Z]{5,15}$/);
+                let reg_id = RegExp(/^[a-zA-Z]+[0-9a-zA-Z]{5,15}$/); // 알파벳 대소문자로 시작하고, 숫자가 혼용
 
-                let reg_pw = RegExp(/^.*(?=^.{9,15}$)(?=.*\d)(?=.*[a-z])(?=.*[~!@#$%^&*()_+{}|:<>?]).*$/);
+                let reg_pw = RegExp(/^.*(?=^.{9,15}$)(?=.*\d)(?=.*[a-z])(?=.*[~!@#$%^&*()_+{}|:<>?]).*$/); 
 
                 let reg_birth = RegExp(/^\d{6}$/);
 
                 let reg_email = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
 
                 // 입력필드 태그참조 변수
+                // 아래 변수들은 어떤 태그를 참조하느냐에 따라, 그 태그에서 제공하는 속성과 메서드를 사용할 수 있다. 
+                /*
+                변수 : 예를 들어, 태그를 참조하는 변수라고 가정을 하고,
+                변수.속성
+                변수.메서드()
+                ex) 라디오 버튼 참조 : gender1  <input type="radio" id="gender1">
+                    gender1.checked 사용가능.
+                    텍스트박스 참조 : u_name    <input type="text" id="u_name">
+                    u_name.checked 사용불가능
+                */
                 let u_name = document.getElementById("u_name");
                 let u_id = document.getElementById("u_id");
                 let u_pw = document.getElementById("u_pw");
@@ -104,6 +114,9 @@
                 let sample2_postcode = document.getElementById("sample2_postcode");
                 let sample2_address = document.getElementById("sample2_address");
                 let sample2_detailAddress = document.getElementById("sample2_detailAddress");
+
+                // if(조건식) : 조건식은 반드시 true or false로 해석되는 코드가 와야 한다.
+                // 조건식에 함수가 오면, 그 함수도 return true or false로 구성되어야 한다.
 
                 if(!empty_validate(u_name, "이름 입력요망")) return;
                 if(!reg_validate(reg_name, u_name, "한글만 입력가능")) return;
@@ -127,6 +140,7 @@
                     return;
                 }
 
+                // <input type="hidden" id="email"> 입력한 메일1,2를 하나로 합치는 구문.
                 email.value = email1.value + "@" + email2.value; // <input type = "hidden" id ="email">  
 
                 if(!empty_validate(email1, "메일 입력요망")) return;
@@ -158,8 +172,12 @@
                     return;
                 }
 
+                // 위의 if문이 true일 경우에는 필드에 입력값이 없거나 입력값이 정규식에 일치되지 않을 경우
+                //            false일 경위에는 입력값이 존재하고, 정규식에 일치되는 경우를 의미
+                
                 alert("유효성 검사 성공");
 
+                // 현재 함수가 <input type"button">태그로 호출이 되어, 전송기능이 없기 때문에 자바스크립트로 현 폼정보를 전송작업을 해야 한다.
                 // document.getElementById("join_form").submit();
 
             }
