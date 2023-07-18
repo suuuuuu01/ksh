@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>동기와 비동기 의미</h1>
+    <script>
+        // 동기 : 하나의 작업이 완료되어야만, 그 다음의 작업이 실행. 위에서부터 순서대로 진행.
+        // 기본적인 명령어는 동기적인 성격 가짐.
+        console.log("가");
+        console.log("나");
+        console.log("다");
+
+        // 비동기 : 하나의 작업이 완료되는 것과 상관없이, 그 다음의 작업이 실행.
+        console.log("가");
+        /*
+        setTimeout(() => {
+            console.log("나");
+        }, 1000);
+        */
+        setTimeout(function() {
+            console.log("나");
+        }, 0);
+
+        // 동기
+        // setTimeout(console.log("나", 1000)); 사용하지 않깅
+        console.log("다");
+    </script>
+</body>
+</html>

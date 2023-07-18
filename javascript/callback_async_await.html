@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>async, await 사용</h1>
+    <script>
+
+        async function greet() {
+            return "Hello"; // async 키워드에 의하여 "Hello"값을 내용으로 Promise()객체로 리턴해준다.
+        }
+
+            console.log(greet());
+
+            greet().then(console.log());
+
+            function greet2() {
+                return new Promise(function(resolve) {
+                    // 비동기적
+                    setTimeout(function() {
+                        resolve("Hello");
+                    }, 1000);
+                });
+            }
+
+            // 일반 순차프로그래밍처럼 동일하게 동작된다.
+            (async function() {
+                let result = await greet2(); // 완료(resolved)될 때까지 대기.
+                console.log(result);
+            })();
+
+    </script>
+</body>
+</html>
