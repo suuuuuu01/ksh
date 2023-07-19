@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>함수의 순차적인 실행</h1>
+<p>함수가 각각 호출</p>
+
+<p>The result of the calculation is:</p>
+<p id="demo"></p>
+
+<script>
+// 함수 선언. 
+function myDisplayer(some) {
+    document.getElementById("demo").innerHTML = some;
+}
+
+// 두 매개변수의 값을 더해서 반환하는 기능.
+function myCalculator(num1, num2) {
+    let sum = num1 + num2;
+    return sum;
+}
+
+// 함수를 각각 호출
+let result = myCalculator(5, 5);
+myDisplayer(result);
+</script>
+</body>
+</html>

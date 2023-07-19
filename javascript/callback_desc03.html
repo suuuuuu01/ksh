@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Callback 함수를 이용한 예제</h1>
+    <p id="demo"></p>
+
+    <script>
+        // 콜백함수 용도.
+        function myDisplayer(something) {
+            document.getElementById("demo").innerHTML = something;
+        }
+
+        // 콜백함수를 이용한 형태.
+        function myCalculator(num1, num2, myCallback) {
+            let sum = num1 + num2;
+            myCallback(sum); // 콜백으로 호출. 내부적으로는 myDisplayer(sum); 으로 호출된다.
+            // myDisplayer(sum); // 함수를 직접 호출
+        }
+
+        myCalculator(5, 5, myDisplayer); // 함수를 파라미터의 값으로 사용 시, () 뺀다.
+    </script>
+</body>
+</html>
