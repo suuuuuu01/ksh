@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JSON문자열 데이터를 object객체로 파싱하기</h1>
+    <p id="demo"></p>
+    <script>
+        let txt = '{"employees":[{"firstName":"홍","lastName":"길동"},' +
+    '{"firstName":"손","lastName":"흥민"},' +
+    '{"firstName":"이","lastName":"강인"}]}';
+
+    const obj = JSON.parse(txt); // 문법검사 및 해석을 하여, javascript의 object로 변환시킴.
+
+    console.log(obj.employees[0]); // 배열데이터를 참조
+    console.log(obj.employees[1]);
+    console.log(obj.employees[2]);
+
+    document.getElementById("demo").innerHTML = obj.employees[0].firstName + " " + obj.employees[0].lastName;
+    </script>
+</body>
+</html>

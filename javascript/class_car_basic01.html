@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>클래스 선언 및 사용</h1>
+    <p id="demo"></p>
+    <script>
+        // 클래스 선언(정의)
+        // 클래스란? 기억장소를 설계(디자인)하는 의미
+        // 클래스? 1) 속성만 2) 메서드만 3) 속성,메서드 혼합
+        // Car클래스 설계목적? 자동차의 이름, 출시년도 정보를 저장하는 기억장소 설계도.
+        class Car {
+            // 생성자함수
+            constructor(name, year) {
+                this.name = name;
+                this.year = year;
+            }
+        
+            // 메서드 추가
+            // 차 연식을 구하는 기능.
+
+            // 메서드명() { 실행내용}
+            age() {
+                const date = new Date();
+                return date.getFullYear() - this.year;
+            }
+        }
+        
+
+        // 클래스 사용 - let, var, const 사용하는 의미와 같다.
+        const myCar1 = new Car("Ford", 2014);  // 제품1
+        const myCar2 = new Car("Audi", 2019); // 제품2
+
+        document.getElementById("demo").innerHTML = 
+        `자동차1 이름은? ${myCar1.name}이고, 자동차2 연식은? ${myCar2.age()}년입나다. 연식은? ${myCar2.age()}년입니다.`;
+
+        console.log(myCar1.age());
+    </script>
+</body>
+</html>

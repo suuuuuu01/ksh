@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"/xml>
+<book>
+    <title>
+        
+    </title>
+        <publisher>이젠</publisher>
+        <price>50000</price>
+        <etc>가격 할인 &lt; <![CDATA[<]]> 50000</etc>
+    </book>
+
+    <book>
+        <!-- 이 책은 절판이다.  -->
+        <title>자바</title>
+        <publisher>이젠</publisher>
+        <price>40000</price>
+        <etc>가격 할인 <![CDATA[ document.write("Hello World");]]></etc>
+    </book>

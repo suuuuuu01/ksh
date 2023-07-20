@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>훈련과정 : 자바, 스프링, 오라클</h1>
+    <p id="java"></p>
+    <p id="spring"></p>
+    <p id="oracle"></p>
+    <script>
+        class Dev {
+            // 생성자함수
+            constructor(java, spring, oracle) {
+                this.java = java;
+                this.spring = spring;
+                this.oracle = oracle; 
+            }
+        }
+
+        class Dev {constructor(java, spring, oracle) {
+                this.java = java2;
+                this.spring = spring2;
+                this.oracle = oracle2; 
+            }
+        }
+
+        const course1 = new Dev("자바", "스프링", "오라클");
+
+        document.getElementById("java").innerHTML = course1.java;
+        document.getElementById("spring").innerHTML = course1.spring;
+        document.getElementById("oracle").innerHTML = course1.oracle;
+
+        course1.java = "java";
+        course1.spring = "spring";
+        course1.oracle = "oracle";
+
+        document.getElementById("java2").innerHTML = course1.java;
+        document.getElementById("spring2").innerHTML = course1.spring;
+        document.getElementById("oracle2").innerHTML = course1.oracle;
+    </script>
+</body>
+</html>

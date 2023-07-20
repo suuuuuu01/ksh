@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>개인정보를 저장하기 위한 기억장소 설계도 : 클래스</h1>
+    <p id="name"></p>
+    <p id="age"></p>
+    <p id="address"></p>
+    <script>
+        class Person {
+            constructor(name, age, addr) {
+                this.name = name;
+                this.year = age;
+                this.addr = addr;
+            }
+        }
+
+        const person1 = new Person("홍길동", 100, "대한민국");
+        const person2 = new Person("손흥민", 32, "영국 토트넘");
+        const person3 = new Person("김세진", 100, "서울시");
+
+        document.getElementById("name").innerHTML = person1.name;
+        document.getElementById("age").innerHTML = person1.year;
+        document.getElementById("addr").innerHTML = person1.addr;
+    </script>
+</body>
+</html>
