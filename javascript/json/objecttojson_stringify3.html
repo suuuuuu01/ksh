@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>object 객체 안에 function() 함수가 있을 때, json 문자열로 변환 시 제거된다.</h1>
+    <p id="demo"></p>
+    <script>
+        const obj = {name:"홍길동", age:function() {return 30;}, country:"대한민국"};
+        
+        // 주석을 걸어서 테스트해보기 
+        // age: function() {return 30;}  ->  age: "function() {return 30;}"
+        obj.age = obj.age.toString(); // 변환 시 함수제거가 되는 특징 때문에 다음 작업을 처리해야 함.
+
+        const myJSON = JSON.stringify(obj); // 16주석이 있으면 age:function() {return 30;} 변환 시 제거됨.
+
+        console.log(myJSON);
+
+        document.getElementById("demo").innerHTML = myJSON;
+    </script>
+</body>
+</html>

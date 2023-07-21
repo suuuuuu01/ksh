@@ -1,3 +1,4 @@
+// 화살표 함수
 const message = () => {
     const name = "홍길동";
     const age = 100;
