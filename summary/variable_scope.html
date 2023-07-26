@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>JavaScript Functions</h1>
+
+<p>Outside myFunction() carName is undefined.</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+let text = "Outside: " + typeof carName; // 또 하나의 새로운 변수로 인식되고, defined 값을 갖게 된다. 
+document.getElementById("demo1").innerHTML = text;
+
+function myFunction() {
+    // 지역변수. 함수범위 내에 선언한 변수는 함수에서만 사용이 가능하고 다른 위치에서는 사용이 불가능.
+    // 지역변수의 scope는 함수 내에서만 사용이 가능하다.
+  let text = "Inside: " + typeof carName + " " + carName; 
+  let carName = "Volvo"; 
+  document.getElementById("demo2").innerHTML = text;
+}
+
+myFunction();
+</script>
+
+</body>
+</html>
