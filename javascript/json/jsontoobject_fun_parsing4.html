@@ -11,12 +11,12 @@
     <script>
         const text = 
             '{"name":"홍길동", "age":"function() {return 30;}", "country":"대한민국"}';
-        const obj = JSON.parse(text);
+        const obj = JSON.parse(text); // parse() 작업에서 age 키의 함수내용을 파싱에서 제외시켰다.
 
-        console.log(obj);
+        console.log(obj.age); // "function() {return 30;}" 문자열로 참조.
 
         // 주석을 걸어서 테스트해보기 27번 라인. obj.age(); -> obj.age; 로 코드 수정할 것.
-        obj.age = eval("(" + obj.age + ")"); // 함수가 eval()에 의하여 문법적인 기능을 갖는다.
+        // obj.age = eval("(" + obj.age + ")"); // (obj.age). 함수가 eval()에 의하여 문법적인 기능을 갖는다.
 
         /*
         let age = function() {return 30}
@@ -26,4 +26,4 @@
 
     </script>
 </body>
-</html>
+</html>                               
