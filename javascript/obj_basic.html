@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>object key 중복 시 나중에 추가한 게 사용됨</h1>
+    <p id="demo"></p>
+    <script>
+        const obj1 = {name:'홍길동', nickname: '의적', name: '손흥민'};
+        const obj2 = {name:'홍길동', nickname: '의적', name: '손흥민'};
+
+        console.log(obj1 == obj2); // false 주소로 비교되어 주소가 다름.
+
+        let x = 10;
+        let y = 10;
+
+        console.log(x == y); // true 변수의 값으로 비교됨
+
+        const obj3 = {...obj1, age : 100};
+
+        document.getElementById("demo").innerHTML = obj1.name;
+
+    </script>
+</body>
+</html>
