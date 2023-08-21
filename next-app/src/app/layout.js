@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import './globals.css';
+import { Control } from './read/[id]/Control';
 
-// html의 head태그안의 내용을 생성하는 부분이다.
+// html의 head 태그안의 내용을 생성하는 부분이다.
 
 /*
 <title>WEB tutorial</title>
@@ -25,6 +26,8 @@ export const metadata = {
 */
 export default async function RootLayout({ children }) {
   
+  // 서버 측의 캐시가 작동되어 새로 추가, 변경된 내용이 반영되지 않으므로
+  // 매번 요청 시 캐시가 작동괴 캐시가 나온다. 새로운 작업진행이 되도록 한다
   const resp = await fetch('http://localhost:9999/topics');
 
   const topics = await resp.json();
@@ -51,6 +54,7 @@ export default async function RootLayout({ children }) {
           </ol>
         
         {children}{/* page.js가 들어간다. */} 
+        <Control />
         <ul>
             <li><Link href='/create'>create</Link></li>
             <li><Link href='/update/id'>update</Link></li>
