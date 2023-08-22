@@ -28,7 +28,7 @@ export default async function RootLayout({ children }) {
   
   // 서버 측의 캐시가 작동되어 새로 추가, 변경된 내용이 반영되지 않으므로
   // 매번 요청 시 캐시가 작동괴 캐시가 나온다. 새로운 작업진행이 되도록 한다
-  const resp = await fetch('http://localhost:9999/topics');
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`, {cache:'no-cache'});
 
   const topics = await resp.json();
 
@@ -49,18 +49,10 @@ export default async function RootLayout({ children }) {
                 return <li key={topic.id}><Link href={`/read/${topic.id}`}>{topic.title}</Link></li>
               })
             }
-            
-
           </ol>
         
         {children}{/* page.js가 들어간다. */} 
         <Control />
-        <ul>
-            <li><Link href='/create'>create</Link></li>
-            <li><Link href='/update/id'>update</Link></li>
-            <li><button>delete</button></li>
-    
-        </ul>
         </body>
     </html>
   )

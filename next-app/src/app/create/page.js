@@ -20,7 +20,7 @@ export default function Create() {
                     },
                     body: JSON.stringify({title, body}) // {title:title, body:body}
                 };
-                const resp = await fetch('http://localhost:9999/topics', options);
+                const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics`, options);
                 const topic = await resp.json(); //새 글 등록 (create)시 작업결과.
                 // 클라이언트 컴포넌트로 동작되기 때문에 개발자도구 콘솔에서 확인하기.
                 // console.log('topic', topic);

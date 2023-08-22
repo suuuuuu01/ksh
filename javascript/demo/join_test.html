@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function sendit() {
+
+            let reg_name = RegExp(/^[가-힣]{2,10}$/); // 한글만 입력가능, 2~10 글자범위
+
+            let reg_id = RegExp(/^[a-zA-Z]+[0-9a-zA-Z]{3,15}$/); // 알파벳 대소문자로 시작하고, 숫자가 혼용, 글자수 6~16
+
+            let reg_pw = RegExp(/^.*(?=^.{7,15}$)(?=.*\d)(?=.*[a-z])(?=.*[~!@#$%^&*()_+{}|:<>?]).*$/);  
+
+            let reg_birth = RegExp(/^\d{6}$/);
+
+            let reg_email = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+
+            let u_id = document.getElementById("u_id");
+            let u_pw = document.getElementById("u_pw");
+            let u_repw = document.getElementById("u_repw");
+            let u_name = document.getElementById("u_name");
+            let email = document.getElementById("email");
+            let pw_chA = document.getElementById("pw_chA");
+            let u_gender1 = document.getElementById("u_gender1");
+            let u_gender2 = document.getElementById("u_gender2");
+
+            if(!empty_validate(u_id, "아이디 입력요망")) return;
+            if(!reg_validate(reg_name, u_name, "영문 소문자, 숫자로 4~16자"))return;
+
+            if(!empty_validate(u_id, "비밀번호 입력요망")) return;
+            if(!reg_validate(reg_name, u_name, "영문/최소 1개의 숫자 또는 특수문자 조합으로 8~16자리"))return;
+
+            if(u_pw.value !=  u_repw.value) {
+                alert("비밀번호 확인이 틀립니다.");
+                u_repw.focus();
+                return;
+            }
+
+            if(!empty_validate(u_name, "이름 입력요망")) return;
+
+            email.value = email1.value + "@" + email2.value;
+
+            if(!empty_validate(email, "이메일 입력요망")) return;
+            if(!reg_validate(reg_email, email, "이메일 형식이 다릅니다." )) return;
+
+            if(!reg_validate) {
+                alert("비밀번호 확인 시 질문을 선택하세요.");
+                return;
+            }
+
+            if(!empty_validate(pw_chA, "비밀번호 확인 시 답변을 작성하세요.")) return;
+
+            if(!u_gender1.checked & !u_gender2.checked) {
+                alert("성별을 선택하세요.");
+                return;
+            }
+                
+            if(!empty_validate(u_birth, "생년월일 선택요망"))return;
+
+            alert("유효성 검사 성공 >_<");
+
+        }
+
+        function empty_validate(target, msg) {
+            if(target.value == "") {
+                alert(msg);
+                target.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function reg_validate(re, target, msg) {
+            if(!re.test(target.value)) {
+                target.focus();
+                alert(msg);
+                return false;
+            }                                       
+            return true;         
+        }
+    </script>
+    
+    <h1>기본정보</h1>
+    <form>
+    <table>
+        <tr>
+            <th>아이디</th>
+            <td>
+                <input type="text" id="u_id" name="u_id" class="txt1"> 
+                <input type="button" value="아이디중복확인" class="btn1">
+            </td>
+        </tr>
+
+        <tr>
+            <th>비밀번호</th>
+            <td>
+                <input type="password" id="u_pw" name="u_pw" class="txt1">
+            </td>
+        </tr>
+
+        <tr>
+            <th>비밀번호 확인</th>
+            <td>
+                <input type="password" id="u_repw" name="u_repw">
+            </td>
+        </tr>
+
+        <tr>
+            <th>이름</th>
+            <td>
+                <input type="text" id="u_name" name="u_name" class="txt1">
+            </td>
+        </tr>
+
+        <tr>
+            <th>이메일</th>
+            <td>
+            <p><input type="text" id="email">@<input type="text" id="email"></p>
+            </td>
+        </tr>
+
+        <tr>
+            <th>이메일 수신여부</th>
+            <td>
+            <input type="checkbox" id="rev_email">수신
+            <input type="checkbox" id="rev_email">수신안함
+            </td>
+        </tr>
+
+        <tr>
+            <th>비밀번호 확인 시 질문</th>
+            <td>
+            <p>
+                <select class="pw_ch" id="pw_ch" name="pw_ch">
+                    <option value="===선택===">===선택===</option>
+                    <option value="어릴 적 별명은?">어릴 적 별명은?</option>
+                    <option value="아버지 성함은?">아버지 성함은?</option>
+                </select>
+            </p>
+            </td>
+        </tr>
+
+        <tr>
+            <th>비밀번호 확인 시 답변</th>
+            <td>
+            <p>
+                <input type="text" id="pw_chA" name="pw_chA" class="pw_chA">
+            </p>
+            </td>
+        </tr>
+
+        <tr>
+            <th>성별</th>
+            <td>
+                <input type="radio" id="u_gender1" name="u_gender">남자
+                <input type="radio" id="u_gender2" name="u_gender">여자
+            </td>
+        </tr>
+
+        <tr>
+            <th>생년월일</th>
+            <td>
+                <input type="date" id="u_birth" name="u_birth">
+            </td>
+        </tr>
+    </table>
+    <p class="submit">
+        <input type="button" value="전송" class="btn1" onclick="sendit();">
+        <input type="reset" value="취소" class="btn1">
+    </p>
+    </form>
+
+    <script>
+
+    </script>
+</body>
+</html>

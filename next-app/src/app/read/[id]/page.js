@@ -5,7 +5,7 @@ export default async function Read(props) {
 
 
     const id = props.params.id;
-    const resp = await fetch(`http://localhost:9999/topics/${id}`); // 백엔드 스프링 주소
+    const resp = await fetch(`${process.env.NEXT_PUBLIC_API_URL}topics/${id}`,{cache:'no-cache'}); // 백엔드 스프링 주소
     const topic = await resp.json();
     return (
     <>
