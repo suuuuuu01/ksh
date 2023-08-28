@@ -4,11 +4,19 @@ a = 10;
 a = 10.25;
 a = "홍길동";
 
-자바
+자바 cf) ppt 2장
 int age;
 데이터타입 : 기억장소를 형태, 크기로 생성하는 기능
     형태(Type) : 정수현, 실수형, 문자형...
     크기 : 1 byte, 2byte, 4byte, 8byte
+
+정수형 - byte(1byte), short(2byte), int(4byte), long(8byte), char(2byte, 문자 겸 정수 타입, 작은따옴표로 감싼다.)
+실수형 - float(4byte), double(8byte)  : double타입이 float타입보다 더 큰 실수 저장 가능, 정밀도도 더 크다
+논리형 - boolean(true, false) : boolean타입 변수에 대입 가능.
+문자형 - string : 큰따옴표로 감싼다. string타입 변수에 대입 가능.
+        이스케이프 문자 : \n, \t ...
+
+
 
 데이터를 관리하는 최소단위 : bit(부호비트 0 양수 or 1 음수)
 데이터를 관리하는 기본단위 : byte
@@ -31,3 +39,4 @@ int age;
 변수<--자동타입변환--값
 큰 허용범위타입 = 작은 허용범위타입
 byte < short, char < int < long < float < double (암기!)
+캐스팅연산자로 강제 타입 변환 : 작은 허용범위타입 = (작은허용범위타입) 큰 허용범위타입
