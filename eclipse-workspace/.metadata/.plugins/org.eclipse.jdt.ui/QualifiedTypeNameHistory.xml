@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.Calendar"/>
+<fullyQualifiedTypeName name="ch06.sec04.Student"/>
+<fullyQualifiedTypeName name="ch06.sec06.exam01.Car"/>
+<fullyQualifiedTypeName name="ch06.sec06.exam02.Car"/>
+<fullyQualifiedTypeName name="sec07.exam01.Car"/>
+<fullyQualifiedTypeName name="sec07.exam02.Korean"/>
+<fullyQualifiedTypeName name="sec08.exam01.Calculator"/>
+<fullyQualifiedTypeName name="sec08.exam02.Computer"/>
+<fullyQualifiedTypeName name="sec10.exam02.Television"/>
+<fullyQualifiedTypeName name="sec10.sec03.Car"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="sec11.exam01.Korean"/>
+<fullyQualifiedTypeName name="ch06.sec12.hankook.Tire"/>
+<fullyQualifiedTypeName name="ch06.sec12.kumho.Tire"/>
+<fullyQualifiedTypeName name="ch06.sec12.hankook.SnowTire"/>
+<fullyQualifiedTypeName name="ch06.sec12.kumho.AllSeasonTire"/>
+<fullyQualifiedTypeName name="java.lang.AbstractMethodError"/>
+<fullyQualifiedTypeName name="ch06.sec13.exam01.package1.B"/>
+<fullyQualifiedTypeName name="ch06.sec13.exam01.package1.A"/>
+<fullyQualifiedTypeName name="ch06.sec13.exam02.package1.A"/>
+<fullyQualifiedTypeName name="ch06.sec13.exam03.package1.A"/>
+<fullyQualifiedTypeName name="ch06.sec14.Car"/>
+</qualifiedTypeNameHistroy>

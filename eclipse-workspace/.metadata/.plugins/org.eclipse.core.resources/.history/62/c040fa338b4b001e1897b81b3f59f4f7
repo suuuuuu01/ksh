@@ -1,0 +1,9 @@
+package ch06.sec11.exam02;
+
+// 상수선언 예제
+public class Earth {
+
+	// 특정한 불변값을 이름으로 정의. 즉 값이 주인공. 값을 변경 불가능.
+	// 상수 선언
+	static final double EARTH_RADIUS = 6400;
+}

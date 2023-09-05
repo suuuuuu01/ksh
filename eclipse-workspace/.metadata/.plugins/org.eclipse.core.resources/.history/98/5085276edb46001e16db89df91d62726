@@ -1,0 +1,47 @@
+package ch05.sec07;
+
+public class MultidimensionalArrayEx02 {
+
+	public static void main(String[] args) {
+		
+		/*
+		 int[][] mathScores = new int[행의 수][열의수 ];
+		 */
+		
+		// int형 배열은 초기값이 0으로 만들어진다.
+		int[][] mathScores = new int[2][3]; // 2*3 (2행 3열의 2차원 배열구조)
+		for(int i=0; i<mathScores.length; i++) {
+			for(int k=0; k<mathScores[i].length; k++) {
+				System.out.println("mathScores[" + i + "][" + k + "]: " + mathScores[i][k] );
+			}
+		}
+		System.out.println();
+		
+		// 배열 항목의 값 변경
+		// 첫 번째 행
+		mathScores[0][0] = 80;
+		mathScores[0][1] = 83;
+		mathScores[0][2] = 85;
+		// 두 번째 행
+		mathScores[1][0] = 86;
+		mathScores[1][1] = 90;
+		mathScores[1][2] = 92;
+		
+		// 전체 학생의 수학 평균 구하기
+		int totalStudent = 0;
+		int totalMathSum = 0;
+		
+		// for
+		for(int i=0; i<mathScores.length; i++) {
+			totalStudent += mathScores[i].length;
+			for ( int k=0; k<mathScores[i].length; k++) {
+				totalMathSum = mathScores[i][k];
+			}
+			double totalAvg = (double) totalMathSum / totalStudent;
+			System.out.println("전체 학생의 수학 평균 점수는: " + totalAvg);
+		}
+		// 평균점수
+		
+		}
+
+}

@@ -1,0 +1,28 @@
+package sec07.dept;
+
+public class Dept {
+
+	// 필드 선언
+	int Deptno;
+	String dname;
+	String Loc;
+	
+	Dept(){}
+	
+	Dept(int Deptno){
+		this.Deptno = Deptno;
+	}
+	
+	Dept(int Deptno, String dname){
+		this.Deptno = Deptno;
+		this.dname = dname;
+	}
+	
+	Dept(int Deptno, String dname, String Loc){
+		this.Deptno = Deptno;
+		this.dname = dname;
+		this.Loc = Loc;
+	}
+	
+	
+}

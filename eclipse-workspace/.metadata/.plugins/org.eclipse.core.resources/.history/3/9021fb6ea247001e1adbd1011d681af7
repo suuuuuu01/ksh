@@ -1,0 +1,13 @@
+package ch06.sec04;
+
+public class StudentExample {
+
+	// 시작메소드
+	public static void main(String[] args) {
+		
+		// 클래스 사용법. 데이터타입 변수 = new 데이터타입이름(생성자메소드)();
+		Student s1 = new Student(); // s1은 힙영역의 주소가 존재한다. 주소를 찾아가서 정보를 사용하게 된다.
+	
+	}
+
+}

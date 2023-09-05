@@ -1,0 +1,24 @@
+package ch05.sec07;
+
+public class MultidimensionalArrayEx01 {
+
+	public static void main(String[] args) {
+		// 다차원 배열
+		/*
+		 int[] arr; 1차원배열
+		 int[][] arr; 2차원배열
+		 int[][][] arr; 3차원배열
+		 */
+		
+		// 2차원 배열 생성
+		int[][] scores = {
+				{80, 90, 96}, // 1반 scores[0]
+				{76, 88}	  // 2반 scores[1]
+		};
+		
+		// 배열의 길이
+		System.out.println("1차원 배열 길이(반의 수): " + scores.length); // 행의 갯수
+
+	}
+
+}
