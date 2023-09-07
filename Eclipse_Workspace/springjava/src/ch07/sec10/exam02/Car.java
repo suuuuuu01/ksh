@@ -1,9 +1,9 @@
 package ch07.sec10.exam02;
 
-// 추상메소드가 있는 추상클래스를 상속받는 경우 
-// 자식클래스는 추상메소드를 재정의해야 하는 규칙.
+// 異붿긽硫붿냼�뱶媛� �엳�뒗 異붿긽�겢�옒�뒪瑜� �긽�냽諛쏅뒗 寃쎌슦 
+// �옄�떇�겢�옒�뒪�뒗 異붿긽硫붿냼�뱶瑜� �옱�젙�쓽�빐�빞 �븯�뒗 洹쒖튃.
 public class Car extends Animal {
-
+// 테스트
 	@Override
 	void sound() {
 		// TODO Auto-generated method stub
