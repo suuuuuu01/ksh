@@ -19,7 +19,7 @@ public class ComputerExample {
 //		computer.areaCircle(r);
 		System.out.println("원 면적 : "+ computer.areaCircle(r));
 		
-//		부모클래스이 areaCircle() 메소드가 목록에서 숨겨져 있음.
+//		부모클래스의  areaCircle() 메소드가 목록에서 숨겨져 있음.
 //		호출 방법은 super. 으로 호출 할 수 있다
 //		super.areaCircle();
 	}

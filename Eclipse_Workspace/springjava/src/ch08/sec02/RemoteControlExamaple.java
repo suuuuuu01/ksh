@@ -8,11 +8,11 @@ public class RemoteControlExamaple {
 		
 		RemoteControl rc;
 		
-		rc = new Television();
-		rc.turnOn(); // Television클래스구현 메소드 호출
+		rc = new Television(); // 다형성
+		rc.turnOn(); // Television 클래스 구현(재정의) 메소드 호출
 		
-		rc = new Audio();
-		rc.turnOn(); // Audio 클래스 구현 메소드 호출
+		rc = new Audio(); // 다형성
+		rc.turnOn(); // Audio 클래스 구현(재정의) 메소드 호출
 
 	}
 
