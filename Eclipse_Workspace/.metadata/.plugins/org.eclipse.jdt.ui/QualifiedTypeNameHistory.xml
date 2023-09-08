@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="ch07.sec10.exam02.Animal"/>
+<fullyQualifiedTypeName name="ch07.sec10.exam02.Horse"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="ch08.sec02.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec02.Television"/>
+<fullyQualifiedTypeName name="ch08.sec02.Audio"/>
+</qualifiedTypeNameHistroy>
