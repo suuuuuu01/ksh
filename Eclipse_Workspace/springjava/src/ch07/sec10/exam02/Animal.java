@@ -16,5 +16,7 @@ public abstract class Animal {
 	}
 	
 	// 추상메소드 body(블록{})가 없다.
-	abstract void sound();
+	void sound() {
+		System.out.println("야옹");
+	}
 }
