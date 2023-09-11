@@ -6,4 +6,18 @@
 <fullyQualifiedTypeName name="ch08.sec02.RemoteControl"/>
 <fullyQualifiedTypeName name="ch08.sec02.Television"/>
 <fullyQualifiedTypeName name="ch08.sec02.Audio"/>
+<fullyQualifiedTypeName name="ch08.sec03.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec04.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec04.Television"/>
+<fullyQualifiedTypeName name="ch08.sec05.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec06.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec07.ServiceImpl"/>
+<fullyQualifiedTypeName name="ch08.sec07.Service"/>
+<fullyQualifiedTypeName name="ch08.sec08.RemoteControl"/>
+<fullyQualifiedTypeName name="ch08.sec08.Searchable"/>
+<fullyQualifiedTypeName name="ch08.sec08.SmartTelevision"/>
+<fullyQualifiedTypeName name="ch08.sec09.InterfaceImpl"/>
+<fullyQualifiedTypeName name="ch08.sec09.InterfaceA"/>
+<fullyQualifiedTypeName name="ch08.sec09.InterfaceB"/>
+<fullyQualifiedTypeName name="ch08.sec09.InterfaceC"/>
 </qualifiedTypeNameHistroy>

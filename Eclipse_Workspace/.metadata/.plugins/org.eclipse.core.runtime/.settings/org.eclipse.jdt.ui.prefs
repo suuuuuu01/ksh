@@ -1,12 +1,13 @@
 content_assist_completion_replacement_background=200,200,0
 content_assist_completion_replacement_foreground=200,0,0
 content_assist_disabled_computers=org.eclipse.jdt.ui.textProposalCategory\u0000org.eclipse.jdt.ui.javaPostfixProposalCategory\u0000org.eclipse.jdt.ui.javaAllProposalCategory\u0000org.eclipse.jdt.ui.javaTypeProposalCategory\u0000org.eclipse.jdt.ui.javaNoTypeProposalCategory\u0000org.eclipse.jdt.ui.javaChainProposalCategory\u0000
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="ch07.sec10.exam02.Animal"><rhs name\="ch07.sec10.exam02.Horse"/></lhs><lhs name\="ch08.sec02.RemoteControl"><rhs name\="ch08.sec02.Television"/><rhs name\="ch08.sec02.Audio"/></lhs></history>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="ch07.sec10.exam02.Animal"><rhs name\="ch07.sec10.exam02.Horse"/></lhs><lhs name\="ch08.sec02.RemoteControl"><rhs name\="ch08.sec02.Television"/><rhs name\="ch08.sec02.Audio"/></lhs><lhs name\="ch08.sec04.RemoteControl"><rhs name\="ch08.sec04.Television"/></lhs><lhs name\="ch08.sec07.Service"><rhs name\="ch08.sec07.ServiceImpl"/></lhs><lhs name\="ch08.sec08.RemoteControl"><rhs name\="ch08.sec08.SmartTelevision"/></lhs><lhs name\="ch08.sec08.Searchable"><rhs name\="ch08.sec08.SmartTelevision"/></lhs><lhs name\="ch08.sec08.SmartTelevision"><rhs name\="ch08.sec08.SmartTelevision"/></lhs></history>
 content_assist_number_of_computers=23
 content_assist_parameters_background=52,57,61
 content_assist_parameters_foreground=238,238,238
 content_assist_proposals_background=52,57,61
 content_assist_proposals_foreground=238,238,238
+do_not_ask_to_install_user_dictionary=true
 eclipse.preferences.version=1
 java_bracket=249,250,244
 java_comment_task_tag=154,140,124
@@ -85,6 +86,16 @@ semanticHighlighting.typeParameter.color=191,164,164
 semanticHighlighting.typeParameter.enabled=true
 semanticHighlighting.varKeyword.color=204,120,50
 sourceHoverBackgroundColor=68,68,68
+spelling_ignore_ampersand_in_properties=true
+spelling_ignore_digits=true
+spelling_ignore_java_strings=true
+spelling_ignore_mixed=true
+spelling_ignore_non_letters=true
+spelling_ignore_sentence=true
+spelling_ignore_single_letters=true
+spelling_ignore_upper=true
+spelling_ignore_urls=true
 spelling_locale_initialized=true
+spelling_user_dictionary_encoding=
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true
