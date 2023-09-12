@@ -2,7 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="ch07.sec10.exam02.Animal"/>
 <fullyQualifiedTypeName name="ch07.sec10.exam02.Horse"/>
-<fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="ch08.sec02.RemoteControl"/>
 <fullyQualifiedTypeName name="ch08.sec02.Television"/>
 <fullyQualifiedTypeName name="ch08.sec02.Audio"/>
@@ -13,11 +12,18 @@
 <fullyQualifiedTypeName name="ch08.sec06.RemoteControl"/>
 <fullyQualifiedTypeName name="ch08.sec07.ServiceImpl"/>
 <fullyQualifiedTypeName name="ch08.sec07.Service"/>
-<fullyQualifiedTypeName name="ch08.sec08.RemoteControl"/>
 <fullyQualifiedTypeName name="ch08.sec08.Searchable"/>
 <fullyQualifiedTypeName name="ch08.sec08.SmartTelevision"/>
 <fullyQualifiedTypeName name="ch08.sec09.InterfaceImpl"/>
 <fullyQualifiedTypeName name="ch08.sec09.InterfaceA"/>
 <fullyQualifiedTypeName name="ch08.sec09.InterfaceB"/>
 <fullyQualifiedTypeName name="ch08.sec09.InterfaceC"/>
+<fullyQualifiedTypeName name="ch08.sec10.exam02.Vehicle"/>
+<fullyQualifiedTypeName name="ch09.sec02.exam01.A.B"/>
+<fullyQualifiedTypeName name="ch09.sec03.exam01.A.B"/>
+<fullyQualifiedTypeName name="ch09.sec03.exam02.A.B"/>
+<fullyQualifiedTypeName name="ch08.sec08.RemoteControl"/>
+<fullyQualifiedTypeName name="ch09.sec07.exam2.RemoteContral"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="ch09.sec07.exam2.RemoteControl"/>
 </qualifiedTypeNameHistroy>
