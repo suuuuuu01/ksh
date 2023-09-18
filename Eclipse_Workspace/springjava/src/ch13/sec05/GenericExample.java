@@ -19,6 +19,7 @@ public class GenericExample {
 		
 		// 직장인 및 일반인만 등록가능한 수강과정. Student, MiddleStudent, HighSthdent 클래스는 제외.
 		Course.registerCourse3(new Applicant<Person>(new Person()));
+		
 		Course.registerCourse3(new Applicant<Worker>(new Worker()));
 		System.out.println();
 		
