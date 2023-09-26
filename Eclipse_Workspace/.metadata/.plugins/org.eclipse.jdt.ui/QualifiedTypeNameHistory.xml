@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.String"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="javax.swing.Box"/>
-<fullyQualifiedTypeName name="ch13.sec01.exam01.TV"/>
-<fullyQualifiedTypeName name="ch13.sec01.exam01.Product"/>
-<fullyQualifiedTypeName name="ch13.sec01.exam02.Rentable"/>
-<fullyQualifiedTypeName name="ch13.sec01.exam02.HomeAgency"/>
-<fullyQualifiedTypeName name="ch13.sec01.exam02.CarAgency"/>
-<fullyQualifiedTypeName name="ch13.sec03.exam01.Box"/>
 <fullyQualifiedTypeName name="java.lang.Number"/>
 <fullyQualifiedTypeName name="ch13.sec05.Student"/>
 <fullyQualifiedTypeName name="ch13.sec05.Worker"/>
@@ -47,17 +38,26 @@
 <fullyQualifiedTypeName name="ch14.sec06.exam01.Calculator"/>
 <fullyQualifiedTypeName name="ch14.sec06.exam01.User1Thread"/>
 <fullyQualifiedTypeName name="ch14.sec06.exam01.User2Thread"/>
-<fullyQualifiedTypeName name="java.lang.Thread"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.io.InputStream"/>
 <fullyQualifiedTypeName name="java.io.FileInputStream"/>
-<fullyQualifiedTypeName name="java.io.OutputStream"/>
-<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.io.Writer"/>
 <fullyQualifiedTypeName name="java.io.FileWriter"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
-<fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="Sungjuk.Sungjuk"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.net.InetAddress"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.net.ServerSocket"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.FileReader"/>
+<fullyQualifiedTypeName name="java.net.InetSocketAddress"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.io.PrintStream"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
+<fullyQualifiedTypeName name="ch13.sec01.exam01.Product"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
 </qualifiedTypeNameHistroy>
