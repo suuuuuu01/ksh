@@ -1,6 +1,7 @@
 package com.demo.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.demo.domain.BoardVO;
 import com.demo.domain.MemberVO;
 import com.demo.domain.SampleDTO;
+import com.demo.domain.SampleDTOList;
 
 // 클라이언트에서 전송해온 값을 스프링에서 참조
 
@@ -67,11 +69,81 @@ public class SampleController2 {
 		logger.info("입력값" + vo);
 	}
 	
-	// 클라이언트에서 동일한 파라미터명으로  데이터가 전송될 때
+	// @RequestParam 어노테이션 사용
+	// 클라이언트에서 동일한 파라미터명으로  데이터가 전송될 때 - 75, 82라인 두 가지 방법
+	
+	// http://localhost:9090/sample2/array?idx=10&idx=20&idx=30
+	// 1)배열 사용
+	@GetMapping("array") 
+	public void list(@RequestParam("idx") String[] idx) {
+		logger.info("idx: " + Arrays.toString(idx));
+	}
+	
 	// http://localhost:9090/sample2/list?idx=10&idx=20&idx=30
-	@GetMapping("list")
-	public void list(@RequestParam("idx") ArrayList<Integer> idx) {
+	// 2)컬렉션 사용
+	@GetMapping("list") // ArrayList<Integer>
+	public void list(@RequestParam("idx") ArrayList<String> idx) {
 		logger.info("idx: " + idx);
 	}
 	
+	// http://localhost:9090/sample2/list2?userid=doccomsa&age=100
+	@GetMapping("list2")
+	public void list2(String userid, int age) {
+		logger.info("userid: " + userid);
+		logger.info("age: " + age);
+	}
+	
+	// 클라이언트에서 전송에 사용하는 파라미터명과 스프링의 메소드 매개변수가 다를 경우 @RequestParam 사용
+	// http://localhost:9090/sample2/list3?id=doccomsa&old=100
+	@GetMapping("list3") 
+	public void list3(@RequestParam("id") String userid, @RequestParam("old") int age) {
+		logger.info("userid: " + userid);
+		logger.info("age: " + age);
+	}
+	
+	// 클라이언트에서 전송에 사용하는 파라미터명과 스프링의 메소드 매개변수가 동일한 경우 생략가능
+	// http://localhost:9090/sample2/list4?userid=doccomsa&age=100
+	@GetMapping("list4") 
+	public void list4(@RequestParam String userid, @RequestParam int age) {
+		logger.info("userid: " + userid);
+		logger.info("age: " + age);
+	}
+	
+	// http://localhost:9090/sample2/list5?userid=doccomsa&age=100 성공
+	// http://localhost:9090/sample2/list5 에러 (@RequestParam 부재)
+	// http://localhost:9090/sample2/list5?userid=doccomsa 성공
+	@GetMapping("list5") 
+	public void list5(@RequestParam(required = true) String userid, @RequestParam(required = false) Integer age) {
+		logger.info("userid: " + userid);
+		logger.info("age: " + age);
+	}
+
+	// http://localhost:9090/sample2/list6?userid=doccomsa&age=100 성공
+	// http://localhost:9090/sample2/list6 성공
+	// http://localhost:9090/sample2/list6?userid=doccomsa 성공
+	@GetMapping("list6") 
+	public void list6(
+			@RequestParam(required = true, defaultValue = "guest") String userid, 
+			@RequestParam(required = false, defaultValue = "-1") Integer age) {
+		logger.info("userid: " + userid);
+		logger.info("age: " + age);
+	}
+	
+	// SampleDTOList클래스 사용 예.
+	// 1)form으로 사용
+	@GetMapping("beanForm")
+	public void beanForm() {
+		logger.info("called beanForm...");
+	}
+	
+	// 2)form에서 전송되어온 데이터 처리 목적
+	@RequestMapping("beanPro") // SampleDTO dto
+	public void beanPro(SampleDTOList lst) {	
+		logger.info("list컬렉션 데이터: " + lst);
+	}
+	
+	
 }
+
+
+

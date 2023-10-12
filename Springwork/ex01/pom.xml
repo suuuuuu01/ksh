@@ -90,13 +90,27 @@
 			<version>1</version>
 		</dependency>
 				
-		<!-- Servlet -->
+		<!-- Servlet 2.5 -> 3.1.0 version변경 -->
+		<!-- 2.5는 업로드 라이브러리가 추가되어야 한다 -->
+		<!-- 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		-->
+		
+		<!-- 3.1.0은 업로드 라이브러리가 추가할 필요가 없다. -->
+		<!-- web.xml문법을 3.1.0으로 수정해야 한다. -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+				
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -123,6 +137,18 @@
     <artifactId>lombok</artifactId>
     <version>1.18.30</version>
     <scope>provided</scope>
+</dependency>
+		     <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId> <!-- jackson annotations, core 이용해 databind 만들어짐 (라이브러리 의존성) -->
+    <version>2.15.2</version>    
+</dependency>
+			<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.5</version>
 </dependency>
 		       
 	</dependencies>
