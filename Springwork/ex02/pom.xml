@@ -80,7 +80,8 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
-			<scope>runtime</scope>
+			<!-- @Log4j -->
+			<!-- <scope>runtime</scope> -->
 		</dependency>
 
 		<!-- @Inject -->
@@ -119,11 +120,11 @@
 		</dependency>
 	
 		<!-- Test -->
+		<!-- 단위테스트 도구프로그램 : JUnit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<scope>test</scope>
 			<!-- <scope>test</scope> -->
 		</dependency> 
 		
@@ -214,6 +215,7 @@
 	    <version>2.9.4</version>
 	</dependency>
 	
+	<!-- 롬복을 스프링 툴에서 설정작업도 함께 해야 한다. -->
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency>
 	    <groupId>org.projectlombok</groupId>

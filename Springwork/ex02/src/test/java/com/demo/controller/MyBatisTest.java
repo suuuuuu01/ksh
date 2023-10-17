@@ -16,10 +16,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
 public class MyBatisTest {
 	// DI(Dependency Injection) : 의존성주입.
-	@Autowired 
+	@Autowired
 	private SqlSessionFactory sqlFactory;
 	
-	@Test // sqlFactory 객체가 주입에 성공되었는지 검사
+	@Test // sqlFactory 객체가 주입에 성공되었는 지 검사
 	public void testFactory() {
 		System.out.println(sqlFactory);
 	}
@@ -32,4 +32,5 @@ public class MyBatisTest {
 			ex.printStackTrace();
 		}
 	}
+
 }
