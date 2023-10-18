@@ -62,7 +62,7 @@
     		<div class="col-md-12">
     			<div class="box box-primary">
 					<div class="box-header with-border">
-						<h3 class="box-title mt-5">Register</h3>
+						<h3 class="box-title mt-5">Get</h3>
 					</div>
 					<!-- 절대경로 /board/register -->					
 						<div class="box-body">
@@ -84,16 +84,17 @@
 							</div>
 							<div class="form-group">
 								<label for="regdate">regdate</label>
-								<input type="text" class="form-control" name="regdate" id="regdate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" />' readonly>
+								<input type="text" class="form-control" name="regdate" id="regdate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy/MM/dd" />' readonly>
 							</div>
 							<div class="form-group">
 								<label for="updateddate">updateddate</label>
-								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" />' readonly>
+								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy/MM/dd" />' readonly>
 							</div>
 						</div>
 						
 						<div class="box-footer">
 							<button type="button" id="btn_modify" class="btn btn-primary">Modify</button>
+							<button type="button" id="btn_delete" class="btn btn-primary">Delete</button>
 							<button type="button" id="btn_list" class="btn btn-primary">List</button>
 					</div>
 				</div>
@@ -109,12 +110,24 @@
 	<%@include file="/WEB-INF/views/comm/plug-in.jsp" %>
       
       <script>
+      // 수정버튼 클릭
 		document.getElementById("btn_modify").addEventListener("click", fn_modify);
 
 		function fn_modify() {
 				// alert('수정');
-			location.href = "/board/modify?bno = ${ board.bno }"; // "URL매핑주소"
+			location.href = "/board/modify?bno=${ board.bno }"; // "URL매핑주소" // 주소 입력 시 띄어쓰기 X
 			}
+
+		// 삭제버튼 클릭
+		document.getElementById("btn_delete").addEventListener("click", fn_delete); // 괄호 제외
+
+		function fn_delete() {
+
+			if(!confirm("삭제 ㄱ?")) return; // window.confirm이지만 window. 생략
+			// 페이지(주소) 이동 명령어
+			location.href = "/board/delete?bno=${ board.bno }"
+			}
+		
       </script>
       
   </body>

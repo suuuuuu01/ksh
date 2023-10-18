@@ -86,15 +86,34 @@
 					</tbody>
 				</table>
 				</div>
-					 <div class="box-footer clearfix">
-	                  <ul class="pagination pagination-sm no-margin pull-right">
-	                     <li><a href="#">«</a></li>
-	                     <li><a href="#">1</a></li>
-	                     <li><a href="#">2</a></li>
-	                     <li><a href="#">3</a></li>
-	                     <li><a href="#">»</a></li>
-	                  </ul>
-	               </div>
+					
+					<div class="box-footer clearfix">
+						<nav aria-label="Page navigation example">
+							 <ul class="pagination">
+							 
+							 <c:if test="${ pageMaker.prev }">
+							 	<li class="page-item">
+							 		<a href="/board/list?pageNum=${ pageMaker.startPage - 1 }" class="page-link">Previous</a>
+							 	</li>
+							 </c:if>
+							 
+							 <c:forEach begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" var="num">
+							 	<li class='page-item ${ pageMaker.cri.pageNum == num ? "active":"" }'aria-current="page">
+							 		<a class="page-link" href="/board/list?pageNum=${num }">${ num }</a>
+							 	</li>
+							 </c:forEach>
+							 
+							 <c:if test="${ pageMaker.next }">
+							 	<li class="page-item">
+							 		<a href="/board/list?pageNum=${ pageMaker.endPage + 1 }" class="page-link" href="#">Next</a>
+							 	</li>
+							 </c:if>
+							       							    
+							 </ul>
+						</nav>
+						<a class="btn btn-primary" href="/board/register" role="button">글쓰기</a>
+					</div>
+					
 				</div>
     		</div>
     	</div>

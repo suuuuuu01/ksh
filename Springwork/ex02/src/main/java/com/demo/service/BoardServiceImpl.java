@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.demo.domain.BoardVO;
+import com.demo.domain.Criteria;
 import com.demo.mapper.BoardMapper;
 
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,11 @@ import lombok.RequiredArgsConstructor;
  root-context.xml파일
  <context:component-scan base-package="com.demo.service" /> 수동추가
 */
-//구현클래스는 인터페이스를 상속시 추상메서드를 반드시 재정의해야 한다.(문법규칙)
+// 구현클래스는 인터페이스를 상속시 추상메서드를 반드시 재정의해야 한다.(문법규칙)
 // BoardMapper인터페이스의 추상메서드를 호출하는 작업을 해야한다.
 @Service
 @RequiredArgsConstructor
-public class modify implements  BoardService{
+public class BoardServiceImpl implements  BoardService{
 
 	//스프링이 BoardMapper인터페이스를 참조하도록 주입해준다.(DI)
 	private final BoardMapper boardMapper;
@@ -58,6 +59,28 @@ public class modify implements  BoardService{
 		return boardMapper.get(bno);
 	}
 
-	
+	@Override
+	public void modify(BoardVO board) {
+		// TODO Auto-generated method stub
+		boardMapper.modify(board);
+	}
+
+	@Override
+	public void delete(Long bno) {
+		// TODO Auto-generated method stub
+		boardMapper.delete(bno);
+	}
+
+	@Override
+	public List<BoardVO> getListWithPaging(Criteria cri) {
+		// TODO Auto-generated method stub
+		return boardMapper.getListWithPaging(cri);
+	}
+
+	@Override
+	public int getTotalCount() {
+		// TODO Auto-generated method stub
+		return boardMapper.getTotalCount();
+	}
 
 }

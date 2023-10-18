@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.BoardMapper">
+	
+	<!-- 글쓰기 저장 -->
+	<insert id="register" parameterType="com.demo.domain.BoardVO">
+		INSERT INTO BOARD(BNO, TITLE, content, WRITER) 
+		VALUES(SEQ_BOARD.NEXTVAL, #{title}, #{content}, #{writer})
+	</insert>
+	
+	<select id="getList" resultType="com.demo.domain.BoardVO">
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDDATE FROM BOARD ORDER BY BNO DESC
+	</select>
+	
+	<select id="get" resultType="com.demo.domain.BoardVO" parameterType="Long">
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDDATE FROM 
+		BOARD WHERE BNO = #{bno}
+	</select>
+	
+	<update id="modify" parameterType="com.demo.domain.BoardVO">
+		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content}, UPDATEDDATE = SYSDATE WHERE  BNO = #{bno}
+	</update>
+	
+</mapper>  

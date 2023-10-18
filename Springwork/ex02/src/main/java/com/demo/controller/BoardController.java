@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.demo.domain.BoardVO;
+import com.demo.domain.Criteria;
+import com.demo.domain.PageDTO;
 import com.demo.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -64,11 +66,35 @@ public class BoardController {
 	//매핑주소   /board/list
 	// 목록
 	// Model model : list.jsp파일에 데이터(대부분 DB)를 출력하고자 할때
+	/*
 	@GetMapping("/list")
 	public void list(Model model) {
 		// 서비스 메소드 호출
 		List<BoardVO> list = boardService.getList();
 		model.addAttribute("list", list); // jsp작업진행 
+	}
+	*/
+	// 스프링이 Criteria클래스의 기본생성자를 호출하여, 객체를 생성해준다.
+	@GetMapping("/list")
+	public void list(Criteria cri, Model model) {
+		
+		log.info("list: " + cri); // cri.toString()
+		// Criteria(pageNum=1, amount=10, type=null, keyword=null)
+		
+		// 1) 목록데이터
+		List<BoardVO> list = boardService.getListWithPaging(cri); 
+		model.addAttribute("list", list);
+		
+		// 2) 페이징기능데이터 - PageDTO
+		int total = boardService.getTotalCount();
+		
+		log.info("데이터 총 갯수: " + total);
+		
+		PageDTO pageDTO = new PageDTO(cri, total);
+		model.addAttribute("pageMaker", pageDTO);
+		
+		// 페이징정보: PageDTO(startPage=1, endPage=10, prev=false, next=true, total=2048, cri=Criteria(pageNum=1, amount=10, type=null, keyword=null))
+		log.info("페이징정보: " + pageDTO);
 	}
 	
 	// 매핑주소 /board/get?bno=게시물번호
@@ -83,6 +109,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 	}
 	
+	// 매핑주소 /Board/modify
 	// 수정하기
 	@PostMapping("/modify") // 다른 주소로 이동 시 String
 	public String modify(BoardVO board) {
@@ -91,7 +118,19 @@ public class BoardController {
 		// db 저장.
 		boardService.modify(board);		
 		
-		return "redirect:/board/list\";
+		return "redirect:/board/list/";
 	}
 	
+	// 매핑주소 /Board/delete
+	// 삭제하기 jsp X 
+	@GetMapping("delete")
+	public String delete(@RequestParam("bno") Long bno) {
+		
+		log.info("삭제할 번호: " + bno);
+		
+		// db작업
+		boardService.delete(bno);
+		
+		return "redirect:/board/list";
+	}
 }

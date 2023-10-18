@@ -69,7 +69,7 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="bno">Bno</label>
-								<input type="text" class="form-control" name=bno id="bno" value="${ board.Bno }" readonly>
+								<input type="text" class="form-control" name=bno id="bno" value="${ board.bno }" readonly>
 							</div>
 							<div class="form-group">
 								<label for="title">Title</label>
@@ -85,11 +85,11 @@
 							</div>
 							<div class="form-group">
 								<label for="regdate">regdate</label>
-								<input type="text" class="form-control" name="regdate" id="regdate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" />' readonly>
+								<input type="text" class="form-control" name="regdate" id="regdate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy/MM/dd" />' readonly>
 							</div>
 							<div class="form-group">
 								<label for="updateddate">updateddate</label>
-								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" />' readonly>
+								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy/MM/dd" />' readonly>
 							</div>
 						</div>
 						
