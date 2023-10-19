@@ -134,10 +134,10 @@
 								</form>
 								<!-- [이전] 1 2 3 4 5 [다음] 페이지 이동목적으로 클릭할 때 사용 -->
 								<form id="actionForm" action="/board/list" method="get">
-									<input type="hidden" name="PageNum" id="" value="${ pageMaker.cri.pageNum }" />
-									<input type="hidden" name="Amount" id="" value="${ pageMaker.cri.amount }" />
-									<input type="hidden" name="type" id="" value="${ pageMaker.cri.type }" />
-									<input type="hidden" name="keyword" id="" value="${ pageMaker.cri.keyword }" />
+									<input type="hidden" name="PageNum" id="PageNum" value="${ pageMaker.cri.pageNum }" />
+									<input type="hidden" name="Amount" id="Amount" value="${ pageMaker.cri.amount }" />
+									<input type="hidden" name="type" id="type" value="${ pageMaker.cri.type }" />
+									<input type="hidden" name="keyword" id="keyword" value="${ pageMaker.cri.keyword }" />
 								</form>
 							</div>
 						</div>
@@ -160,6 +160,7 @@
 		// 폼태그 참조
 		let actionForm = document.getElementById("actionForm");
 
+		// <form id="actionForm" 태그를 참조하여, 필요한 정보를 변경 및 사용
 		// 페이지 번호 클릭 시 동작되는 이벤트 설정
 		// <a class="movepage">1</a> <a class="movepage">2</a> <a class="movepage">3</a> <a class="movepage">4</a> <a class="movepage">5</a>
 		const movePages = document.getElementsByClassName("movepage");
@@ -170,7 +171,8 @@
 				// data-page="1"
 				// console.log("페이지번호", event.target.dataset.page);
 				document.getElementById("pageNum").value = event.target.dataset.page;
-				// actionForm.submit(); // /board/list
+				actionForm.setAttribute("action", "/board/list");
+				actionForm.submit(); // /board/list
 
 			});
 		});
@@ -183,9 +185,15 @@
 				event.preventDefault();
 				
 				let bno = event.target.dataset.bno;
-				// actionForm.append("<input type='hidden' name='bno' value='"+ bno + "'>");
+				// <input type='hidden' name='bno' value='게시물번호'>;
+				// HTML DOM문법
+				const newInput = document.createElement("input");
+				newInput.setAttribute("type", "hidden");
+				newInput.setAttribute("name", "bno");
+				newInput.setAttribute("value", "bno");
+
 				actionForm.setAttribute("action", "/board/get"); // /board/list -> /board/get
-				// actionForm.submit();
+				actionForm.submit();
 			});
 		});
 		</script>

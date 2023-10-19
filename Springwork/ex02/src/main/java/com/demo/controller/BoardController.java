@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -103,9 +104,12 @@ public class BoardController {
 	// 게시물읽기 : 리스트에서 제목을 클릭했을 때, 게시물번호에 데이터를 출력
 	// 수정폼
 	@GetMapping({"/get", "/modify"}) 
-	public void get(@RequestParam("bno") Long bno, Model model) {
+	public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
 		// 목록에서 선택한 게시물번호
 		log.info("게시물번호: " + bno);
+		
+		// 페이징과 검색정보
+		log.info("페이징과 검색정보: " + cri);
 		
 		BoardVO board = boardService.get(bno);
 		model.addAttribute("board", board);

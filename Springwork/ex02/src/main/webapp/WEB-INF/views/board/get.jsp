@@ -93,6 +93,15 @@
 						</div>
 						
 						<div class="box-footer">
+							<!-- Modify, Delete, List 버튼 클릭 시 아래 form태그를 전송-->
+						<form id="curListInfo" action="" method="get">
+							<input type="hidden" name="PageNum" id="PageNum" value="${ cri.pageNum }" />
+							<input type="hidden" name="Amount" id="Amount" value="${ cri.amount }" />
+							<input type="hidden" name="type" id="type" value="${ cri.type }" />
+							<input type="hidden" name="keyword" id="keyword" value="${ cri.keyword }" />
+							<input type="hidden" name="bno" id="bno" value="${ board.bno }" />
+						</form>
+
 							<button type="button" id="btn_modify" class="btn btn-primary">Modify</button>
 							<button type="button" id="btn_delete" class="btn btn-primary">Delete</button>
 							<button type="button" id="btn_list" class="btn btn-primary">List</button>
@@ -108,14 +117,21 @@
   	<%@include file="/WEB-INF/views/comm/footer.jsp" %>
 </footer>
 	<%@include file="/WEB-INF/views/comm/plug-in.jsp" %>
-      
-      <script>
+    
+    <script>
+		// 
+		let curListInfo = document.getElementById("");
+
       // 수정버튼 클릭
 		document.getElementById("btn_modify").addEventListener("click", fn_modify);
 
 		function fn_modify() {
+
+			curListInfo.setAttribute("action", "/board/modify"); // /board/list -> /board/get
+			curListInfo.submit();
+			/*
 				// alert('수정');
-			location.href = "/board/modify?bno=${ board.bno }"; // "URL매핑주소" // 주소 입력 시 띄어쓰기 X
+			location.href = "/board/modify?bno=${ board.bno }"; // "URL매핑주소" // 주소 입력 시 띄어쓰기 X */
 			}
 
 		// 삭제버튼 클릭
@@ -125,11 +141,21 @@
 
 			if(!confirm("삭제 ㄱ?")) return; // window.confirm이지만 window. 생략
 			// 페이지(주소) 이동 명령어
-			location.href = "/board/delete?bno=${ board.bno }"
+			curListInfo.setAttribute("action", "/board/delete"); 
+			curListInfo.submit();
+			}
+
+		// 리스트버튼 클릭
+		document.getElementById("btn_list").addEventListener("click", fn_list); // 괄호 제외
+
+		function fn_list() {
+
+			curListInfo.setAttribute("action", "/board/list"); 
+			curListInfo.submit();
 			}
 		
-      </script>
-      
-  </body>
+    </script>
+    
+	</body>
 </html>
     
