@@ -14,6 +14,27 @@
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDDATE FROM BOARD ORDER by bno desc
 	</select>
 	
+	<!-- 공통된 sql 구문작업 -->
+	<sql id="criteria">
+			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+				<foreach collection="typeArr" item="type"> <!-- getter로 인식해 Criteria.java로 찾아감 -->
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 'T'.toString()">
+								title like '%' || #{keyword} || '%' <!-- Criteria.java 내 keyword -->
+							</when>
+							<when test="type == 'W'.toString()">
+								writer like '%' || #{keyword} || '%' 
+							</when>
+							<when test="type == 'C'.toString()">
+								content like '%' || #{keyword} || '%' 
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+	</sql>
+	
 	<!-- CDATA 섹션 : <![CDATA[ 데이터내용 ]]>-->
 	<select id="getListWithPaging" resultType="com.demo.domain.BoardVO" parameterType="com.demo.domain.Criteria">
 		<![CDATA[ 
@@ -25,14 +46,24 @@
 		        rownum rn, bno, title, content, writer, regdate, updateddate 
 		    from 
 		        board 
-		    where rownum <= #{pageNum} * #{amount}
+		    where 
+		    ]]>
+		    
+		    <include refid="criteria"></include>
+		 
+		 <![CDATA[ 
+		    	rownum <= #{pageNum} * #{amount} 
 		    )
 		where rn > (#{pageNum} -1) * #{amount}
-		]]>
+		]]> <!-- {pageNum}은 getpageNum이 동작 -->
 	</select>
 	
 	<select id="getTotalCount" resultType="int">
-		SELECT COUNT(*) FROM BOARD
+		SELECT COUNT(*) FROM BOARD where
+		
+		<include refid="criteria"></include>
+		
+		bno > 0 <!-- 조건이 사용되지 않으면 실행? -->
 	</select>
 	
 	<select id="get" resultType="com.demo.domain.BoardVO" parameterType="Long">

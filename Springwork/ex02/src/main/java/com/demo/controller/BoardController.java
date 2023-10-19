@@ -74,19 +74,21 @@ public class BoardController {
 		model.addAttribute("list", list); // jsp작업진행 
 	}
 	*/
-	// 스프링이 Criteria클래스의 기본생성자를 호출하여, 객체를 생성해준다.
+	// 스프링이 Criteria클래스의 기본생성자를 호출하여, 아래 두 객체를 생성해준다.
+	// Criteria cri = new Criteria(); this(1, 10);
+	// Model model = new Model();
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		
 		log.info("list: " + cri); // cri.toString()
 		// Criteria(pageNum=1, amount=10, type=null, keyword=null)
 		
-		// 1) 목록데이터
+		// 1) 목록데이터 - List<BoardVO>
 		List<BoardVO> list = boardService.getListWithPaging(cri); 
 		model.addAttribute("list", list);
 		
 		// 2) 페이징기능데이터 - PageDTO
-		int total = boardService.getTotalCount();
+		int total = boardService.getTotalCount(cri); // 테이블의 데이터 전체갯수
 		
 		log.info("데이터 총 갯수: " + total);
 		

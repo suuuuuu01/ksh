@@ -78,9 +78,9 @@
 						<c:forEach items="${ list }" var="board"> <!-- BoardVO클래스 성격 -->
 						<tr>
 							<td>${ board.bno }</td>
-							<td><a href="/board/get?bno=${ board.bno }">${ board.title }</a></td>
+							<td><a class="move" href="#" data-bno="${ board.bno }">${ board.title }</a></td>
 							<td>${ board.writer }</td>
-							<td><fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" />							</td>
+							<td><fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" /></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -88,29 +88,59 @@
 				</div>
 					
 					<div class="box-footer clearfix">
-						<nav aria-label="Page navigation example">
-							 <ul class="pagination">
-							 
-							 <c:if test="${ pageMaker.prev }">
-							 	<li class="page-item">
-							 		<a href="/board/list?pageNum=${ pageMaker.startPage - 1 }" class="page-link">Previous</a>
-							 	</li>
-							 </c:if>
-							 
-							 <c:forEach begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" var="num">
-							 	<li class='page-item ${ pageMaker.cri.pageNum == num ? "active":"" }'aria-current="page">
-							 		<a class="page-link" href="/board/list?pageNum=${num }">${ num }</a>
-							 	</li>
-							 </c:forEach>
-							 
-							 <c:if test="${ pageMaker.next }">
-							 	<li class="page-item">
-							 		<a href="/board/list?pageNum=${ pageMaker.endPage + 1 }" class="page-link" href="#">Next</a>
-							 	</li>
-							 </c:if>
-							       							    
-							 </ul>
-						</nav>
+						<div class="row">
+							<div class="col-6"> <!--// "col-(해상도)-숫자"-->
+								<nav aria-label="Page navigation example">
+									<ul class="pagination">
+									<!-- 이전 페이지 표시여부 -->
+									<c:if test="${ pageMaker.prev }">
+										<li class="page-item">
+											<a href="/board/list?pageNum=${ pageMaker.startPage - 1 }" class="page-link">Previous</a>
+										</li>
+									</c:if>
+									<!-- 페이지 번호 출력 -->
+									<!-- 1 2 3 4 5 6 7 8 9 10 [다음] -->
+									<!-- [이전] 11 12 13 14 15 16 17 18 19 20 -->
+									<c:forEach begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" var="num">
+										<li class='page-item ${ pageMaker.cri.pageNum == num ? "active":"" }'aria-current="page">
+											<a class="page-link movepage" href="#" data-page="${ num }">${ num }</a>
+										</li>
+									</c:forEach>
+									<!-- 다음 표시여부 -->
+									<c:if test="${ pageMaker.next }">
+										<li class="page-item">
+											<a href="/board/list?pageNum=${ pageMaker.endPage + 1 }" class="page-link" href="#">Next</a>
+										</li>
+									</c:if>
+																		
+									</ul>
+								</nav>
+							</div>
+							<div class="col-6"> <!-- 보통 get방식 사용 -->
+								<form action="/board/list" method="get"> <!-- post방식으로 검색결과 만든 후 브라우저 보안으로 인해 이전버튼 눌러도 만료 페이지 뜸 -->
+									<select name="type">
+										<option selected>검색종류선택</option>
+										<option value="T">제목</option>
+										<option value="C">내용</option>
+										<option value="W">작성자</option>
+										<option value="TC">제목 or 내용</option>
+										<option value="TW">제목 or 작성자</option>
+										<option value="TWC">제목 or 작성자 or 내용</option>
+									</select>
+									<input type="text" name="keyword" value="" />
+									<input type="hidden" name="PageNum" value="${ pageMaker.cri.pageNum }" />
+									<input type="hidden" name="Amount" value="${ pageMaker.cri.amount }" />
+									<button type="submit" class="btn btn-primary">검색</button>
+								</form>
+								<!-- [이전] 1 2 3 4 5 [다음] 페이지 이동목적으로 클릭할 때 사용 -->
+								<form id="actionForm" action="/board/list" method="get">
+									<input type="hidden" name="PageNum" id="" value="${ pageMaker.cri.pageNum }" />
+									<input type="hidden" name="Amount" id="" value="${ pageMaker.cri.amount }" />
+									<input type="hidden" name="type" id="" value="${ pageMaker.cri.type }" />
+									<input type="hidden" name="keyword" id="" value="${ pageMaker.cri.keyword }" />
+								</form>
+							</div>
+						</div>
 						<a class="btn btn-primary" href="/board/register" role="button">글쓰기</a>
 					</div>
 					
@@ -122,10 +152,43 @@
 </main>
 
 <footer class="footer mt-auto py-3">
-  <%@include file="/WEB-INF/views/comm/footer.jsp" %>
+	<%@include file="/WEB-INF/views/comm/footer.jsp" %>
 </footer>
-<%@include file="/WEB-INF/views/comm/plug-in.jsp" %>
-      
-  </body>
+	<%@include file="/WEB-INF/views/comm/plug-in.jsp" %>
+    
+		<script>
+		// 폼태그 참조
+		let actionForm = document.getElementById("actionForm");
+
+		// 페이지 번호 클릭 시 동작되는 이벤트 설정
+		// <a class="movepage">1</a> <a class="movepage">2</a> <a class="movepage">3</a> <a class="movepage">4</a> <a class="movepage">5</a>
+		const movePages = document.getElementsByClassName("movepage");
+		Array.from(movePages).forEach(function(mv_page) {
+			// action폼 전송
+			mv_page.addEventListener("click", function(event) {
+				event.preventDefault();
+				// data-page="1"
+				// console.log("페이지번호", event.target.dataset.page);
+				document.getElementById("pageNum").value = event.target.dataset.page;
+				// actionForm.submit(); // /board/list
+
+			});
+		});
+
+		// 제목 클릭 시 이벤트 설정 : 게시물 읽기
+		const moves = document.getElementsByClassName("move");
+		Array.from(moves).forEach(function(move) {
+			// action폼 전송
+			mv_page.addEventListener("click", function(event) {
+				event.preventDefault();
+				
+				let bno = event.target.dataset.bno;
+				// actionForm.append("<input type='hidden' name='bno' value='"+ bno + "'>");
+				actionForm.setAttribute("action", "/board/get"); // /board/list -> /board/get
+				// actionForm.submit();
+			});
+		});
+		</script>
+	</body>
 </html>
     

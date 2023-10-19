@@ -29,11 +29,11 @@ public interface BoardMapper {
 	// 목록 여러 개 List<BoardVO> 리턴값.
 	public List<BoardVO> getList();
 	
-	// 페이징목록. 여러 개 List<BoardVO> 리턴값.
+	// 페이징목록. 여러 개 List<BoardVO> 리턴값. pageNum, amount, type, keword 사용
 	public List<BoardVO> getListWithPaging(Criteria cri);
 	
-	// 전체 데이터 갯수
-	public int getTotalCount();
+	// 전체 데이터 갯수(검색포함)
+	public int getTotalCount(Criteria cri); // type, keword 사용
 	
 	//글삭제하기
 	public void delete(Long bno); // BoardController (삭제할 글번호)
