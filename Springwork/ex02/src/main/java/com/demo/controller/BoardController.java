@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.demo.domain.BoardVO;
 import com.demo.domain.Criteria;
@@ -117,25 +118,37 @@ public class BoardController {
 	
 	// 매핑주소 /Board/modify
 	// 수정하기
+	// RedirectAttributes rttr : 페이지(주소) 이동 시 파라미터 정보 제공하는 목적으로 사용
 	@PostMapping("/modify") // 다른 주소로 이동 시 String
-	public String modify(BoardVO board) {
+	public String modify(BoardVO board, Criteria cri, RedirectAttributes rttr) {
 		
 		log.info("수정 데이터: " + board);
+		log.info("Criteria: " + cri);
 		// db 저장.
-		boardService.modify(board);		
 		
-		return "redirect:/board/list/";
+		boardService.modify(board);
+		
+		// 검색과 페이지정보를 이동주소(/board/list/)의 파라미터로 사용하기 위한 작업
+//		rttr.addFlashAttribute("pageNum", cri.getPageNum());
+//		rttr.addFlashAttribute("amount", cri.getAmount());
+//		rttr.addFlashAttribute("type", cri.getType());
+//		rttr.addFlashAttribute("keyword", cri.getKeyword());
+		
+		// board/list?pageNum=값&amount=값&type=값&keyword=값  <= 위 코드로 인해 이렇게 처리됨.
+		return "redirect:/board/list/" + cri.getListLink(); // 로 이동 시 사용하는 메소드 list(Criteria cri, Model model)
 	}
 	
 	// 매핑주소 /Board/delete
 	// 삭제하기 jsp X 
 	@GetMapping("delete")
-	public String delete(@RequestParam("bno") Long bno) {
+	public String delete(@RequestParam("bno") Long bno, Criteria cri, RedirectAttributes rttr) {
 		
 		log.info("삭제할 번호: " + bno);
 		
 		// db작업
 		boardService.delete(bno);
+		
+		
 		
 		return "redirect:/board/list";
 	}

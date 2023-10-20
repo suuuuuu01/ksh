@@ -31,4 +31,6 @@ public class BoardVO {
 	private Date regdate;
 	private Date updateddate;
 	
+	private int viewcount;
+	
 }

@@ -1,5 +1,7 @@
 package com.demo.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -33,6 +35,19 @@ public class Criteria {
 		
 		// Type이 "TWC"면, {"T", "W", "C"}
 		return type == null? new String[] {} : type.split("");
+	}
+	
+	// UriComponentsBuilder : 여러 개의 파라미터들을 연결하여 URL형태로 만들어주는 기능.
+	public String getListLink() {
+	      
+	      UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+//	            Getter 때문에 필드값, 겟값 둘다 사용 가능하다.
+	            .queryParam("pageNum", this.pageNum)
+	            .queryParam("amount", this.amount)
+	            .queryParam("type", this.getType())
+	            .queryParam("keyword", this.getKeyword());
+	      
+	      return builder.toUriString();
 	}
 	
 }

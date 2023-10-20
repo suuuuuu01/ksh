@@ -69,6 +69,10 @@
 						<div class="box-body">
 							<div class="form-group">
 								<label for="bno">Bno</label>
+								<input type="hidden" name="PageNum" id="PageNum" value="${ cri.pageNum }" />
+								<input type="hidden" name="Amount" id="Amount" value="${ cri.amount }" />
+								<input type="hidden" name="type" id="type" value="${ cri.type }" />
+								<input type="hidden" name="keyword" id="keyword" value="${ cri.keyword }" />
 								<input type="text" class="form-control" name=bno id="bno" value="${ board.bno }" readonly>
 							</div>
 							<div class="form-group">

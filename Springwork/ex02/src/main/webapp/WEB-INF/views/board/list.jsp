@@ -72,15 +72,17 @@
 							<th style="width: 10%">번호</th>
 							<th style="width: 50%">제목</th>							
 							<th style="width: 15%">작성자</th>														
-							<th style="width: 25%">등록일</th>
+							<th style="width: 15%">등록일</th>
+							<th style="width: 10%">조회수</th>
 						</tr>
 						<!-- JSTL문법 작업 -->
-						<c:forEach items="${ list }" var="board"> <!-- BoardVO클래스 성격 -->
+						<c:forEach items="${list}" var="board"> <!-- BoardVO클래스 성격 -->
 						<tr>
 							<td>${ board.bno }</td>
-							<td><a class="move" href="#" data-bno="${ board.bno }">${ board.title }</a></td>
+							<td><a class="move" action="/board/get" href="#" data-bno="${ board.bno }">${ board.title }</a></td>
 							<td>${ board.writer }</td>
-							<td><fmt:formatDate value="${ board.regdate }" pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd" /></td>
+							<td>${ board.viewcount }</td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -93,23 +95,23 @@
 								<nav aria-label="Page navigation example">
 									<ul class="pagination">
 									<!-- 이전 페이지 표시여부 -->
-									<c:if test="${ pageMaker.prev }">
+									<c:if test="${pageMaker.prev}">
 										<li class="page-item">
-											<a href="/board/list?pageNum=${ pageMaker.startPage - 1 }" class="page-link">Previous</a>
+											<a href="/board/list?pageNum=${pageMaker.startPage-1}" class="page-link">Previous</a>
 										</li>
 									</c:if>
 									<!-- 페이지 번호 출력 -->
 									<!-- 1 2 3 4 5 6 7 8 9 10 [다음] -->
 									<!-- [이전] 11 12 13 14 15 16 17 18 19 20 -->
-									<c:forEach begin="${ pageMaker.startPage }" end="${ pageMaker.endPage }" var="num">
-										<li class='page-item ${ pageMaker.cri.pageNum == num ? "active":"" }'aria-current="page">
-											<a class="page-link movepage" href="#" data-page="${ num }">${ num }</a>
+									<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="num">
+										<li class='page-item ${pageMaker.cri.pageNum == num ? "active":""}'aria-current="page">
+											<a class="page-link movepage" href="#" data-page="${num}">${ num }</a>
 										</li>
 									</c:forEach>
 									<!-- 다음 표시여부 -->
-									<c:if test="${ pageMaker.next }">
+									<c:if test="${pageMaker.next}">
 										<li class="page-item">
-											<a href="/board/list?pageNum=${ pageMaker.endPage + 1 }" class="page-link" href="#">Next</a>
+											<a href="/board/list?pageNum=${pageMaker.endPage+1}" class="page-link" href="#">Next</a>
 										</li>
 									</c:if>
 																		
@@ -120,24 +122,26 @@
 								<form action="/board/list" method="get"> <!-- post방식으로 검색결과 만든 후 브라우저 보안으로 인해 이전버튼 눌러도 만료 페이지 뜸 -->
 									<select name="type">
 										<option selected>검색종류선택</option>
-										<option value="T">제목</option>
-										<option value="C">내용</option>
-										<option value="W">작성자</option>
-										<option value="TC">제목 or 내용</option>
-										<option value="TW">제목 or 작성자</option>
-										<option value="TWC">제목 or 작성자 or 내용</option>
+										<option value="T" ${pageMaker.cri.type == 'T'? 'selected' : ''}>제목</option>
+										<option value="C" ${pageMaker.cri.type == 'C'? 'selected' : ''}>내용</option>
+										<option value="W" ${pageMaker.cri.type == 'W'? 'selected' : ''}>작성자</option>
+										<option value="TC" ${pageMaker.cri.type == 'TC'? 'selected' : ''}>제목 or 내용</option>
+										<option value="TW" ${pageMaker.cri.type == 'TW'? 'selected' : ''}>제목 or 작성자</option>
+										<option value="TWC" ${pageMaker.cri.type == 'TWC'? 'selected' : ''}>제목 or 작성자 or 내용</option>
 									</select>
-									<input type="text" name="keyword" value="" />
-									<input type="hidden" name="PageNum" value="${ pageMaker.cri.pageNum }" />
-									<input type="hidden" name="Amount" value="${ pageMaker.cri.amount }" />
+									<input type="text" name="keyword" value="${pageMaker.cri.keyword}" />
+									<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" />
+									<input type="hidden" name="amount" value="${pageMaker.cri.amount}" />
 									<button type="submit" class="btn btn-primary">검색</button>
 								</form>
-								<!-- [이전] 1 2 3 4 5 [다음] 페이지 이동목적으로 클릭할 때 사용 -->
+								<!-- 1) 페이지번호를 클릭할 때 사용 [이전] 1 2 3 4 5 [다음]  action="/board/list" -->
+								<!-- 2) 목록에서 제목 클릭할 때 사용 action="/board/get" -->
 								<form id="actionForm" action="/board/list" method="get">
-									<input type="hidden" name="PageNum" id="PageNum" value="${ pageMaker.cri.pageNum }" />
-									<input type="hidden" name="Amount" id="Amount" value="${ pageMaker.cri.amount }" />
-									<input type="hidden" name="type" id="type" value="${ pageMaker.cri.type }" />
-									<input type="hidden" name="keyword" id="keyword" value="${ pageMaker.cri.keyword }" />
+									<input type="hidden" name="pageNum" id="pageNum" value="${pageMaker.cri.pageNum}" />
+									<input type="hidden" name="amount" id="amount" value="${pageMaker.cri.amount}" />
+									<input type="hidden" name="type" id="type" value="${pageMaker.cri.type}" />
+									<input type="hidden" name="keyword" id="keyword" value="${pageMaker.cri.keyword}" />
+									<input type="hidden" name="bno" id="bno" />
 								</form>
 							</div>
 						</div>
@@ -178,19 +182,29 @@
 		});
 
 		// 제목 클릭 시 이벤트 설정 : 게시물 읽기
+		// <a class="move">제목</a>
 		const moves = document.getElementsByClassName("move");
 		Array.from(moves).forEach(function(move) {
 			// action폼 전송
-			mv_page.addEventListener("click", function(event) {
+			move.addEventListener("click", function(event) {
 				event.preventDefault();
-				
-				let bno = event.target.dataset.bno;
-				// <input type='hidden' name='bno' value='게시물번호'>;
+				console.log("게시물읽기:" + event.target.dataset.click);
+
+				// bno 제거작업
+				// 목록에서 제목 클릭 후 게시물읽기에서 뒤로버튼에 의하여 목록으로 돌아오고
+				// 다시 제목을 클릭하면, bno파라미터가 추가되기 때문에 기존 bno파라미터를 삭제해야 함.
+				document.getElementById("bno").remove();
+
+				// <a href="#" data-bno="게시물번호" data-name="값" data-title="값"/>
+				let bno = event.target.dataset.bno; // dataset : data-로 시작하는 것들 data-bno, data-name, data-title
+				// <input type='hidden' name='bno' value='게시물번호'>
 				// HTML DOM문법
 				const newInput = document.createElement("input");
 				newInput.setAttribute("type", "hidden");
 				newInput.setAttribute("name", "bno");
-				newInput.setAttribute("value", "bno");
+				newInput.setAttribute("id", "bno");
+				newInput.setAttribute("value", bno);
+				actionForm.appendChild(newInput);
 
 				actionForm.setAttribute("action", "/board/get"); // /board/list -> /board/get
 				actionForm.submit();

@@ -88,15 +88,15 @@
 							</div>
 							<div class="form-group">
 								<label for="updateddate">updateddate</label>
-								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.regdate }" pattern="yyyy/MM/dd" />' readonly>
+								<input type="text" class="form-control" name="updateddate" id="updateddate" value='<fmt:formatDate value="${ board.updateddate }" pattern="yyyy/MM/dd" />' readonly>
 							</div>
 						</div>
 						
 						<div class="box-footer">
 							<!-- Modify, Delete, List 버튼 클릭 시 아래 form태그를 전송-->
-						<form id="curListInfo" action="" method="get">
-							<input type="hidden" name="PageNum" id="PageNum" value="${ cri.pageNum }" />
-							<input type="hidden" name="Amount" id="Amount" value="${ cri.amount }" />
+						<form id="curListInfo" action="" method="get"> <!-- BoardController.java의  @ModelAttribute("cri") Criteria cri 숨겨져 있음. -->
+							<input type="hidden" name="pageNum" id="pageNum" value="${ cri.pageNum }" />
+							<input type="hidden" name="amount" id="amount" value="${ cri.amount }" />
 							<input type="hidden" name="type" id="type" value="${ cri.type }" />
 							<input type="hidden" name="keyword" id="keyword" value="${ cri.keyword }" />
 							<input type="hidden" name="bno" id="bno" value="${ board.bno }" />
@@ -119,8 +119,8 @@
 	<%@include file="/WEB-INF/views/comm/plug-in.jsp" %>
     
     <script>
-		// 
-		let curListInfo = document.getElementById("");
+		// <form id="curListInfo" action="" method="get">
+		let curListInfo = document.getElementById("curListInfo");
 
       // 수정버튼 클릭
 		document.getElementById("btn_modify").addEventListener("click", fn_modify);
@@ -130,7 +130,7 @@
 			curListInfo.setAttribute("action", "/board/modify"); // /board/list -> /board/get
 			curListInfo.submit();
 			/*
-				// alert('수정');
+			// alert('수정');
 			location.href = "/board/modify?bno=${ board.bno }"; // "URL매핑주소" // 주소 입력 시 띄어쓰기 X */
 			}
 

@@ -22,6 +22,9 @@ public interface BoardMapper {
 	
 	// 게시물읽기 또는 글수정 폼 1개 BoardVO
 	public BoardVO get(Long bno);
+	
+	// 조회수 증가
+	public void readCount(Long bno);
 		
 	//글수정하기
 	public void modify(BoardVO board);	

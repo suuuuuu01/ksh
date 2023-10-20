@@ -14,9 +14,9 @@
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDDATE FROM BOARD ORDER by bno desc
 	</select>
 	
-	<!-- 공통된 sql 구문작업 -->
-	<sql id="criteria">
-			<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+	<!-- 공통된 sql 구문작업 : 검색조건 -->
+	<sql id="criteria"> 
+			<trim prefix="(" suffix=") AND" prefixOverrides="OR"> <!-- prefixOverrides : <foreach>문 시작 시 처음으로 나오는 단어가 공통된 단어이면 제거 -->
 				<foreach collection="typeArr" item="type"> <!-- getter로 인식해 Criteria.java로 찾아감 -->
 					<trim prefix="OR">
 						<choose>
@@ -39,11 +39,11 @@
 	<select id="getListWithPaging" resultType="com.demo.domain.BoardVO" parameterType="com.demo.domain.Criteria">
 		<![CDATA[ 
 		select 
-		    bno, title, content, writer, regdate, updateddate
+		    bno, title, content, writer, regdate, updateddate, viewcount
 		from 
 		    (
 		    select /*+INDEX_DESC(tbl_board pk_board) */
-		        rownum rn, bno, title, content, writer, regdate, updateddate 
+		        rownum rn, bno, title, content, writer, regdate, updateddate, viewcount
 		    from 
 		        board 
 		    where 
@@ -63,13 +63,17 @@
 		
 		<include refid="criteria"></include>
 		
-		bno > 0 <!-- 조건이 사용되지 않으면 실행? -->
+		bno > 0 <!-- 조건이 사용되지 않으면 실행 -->
 	</select>
 	
 	<select id="get" resultType="com.demo.domain.BoardVO" parameterType="Long">
 		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDDATE FROM 
 		BOARD WHERE BNO = #{bno}
 	</select>
+	
+	<update id="readCount" parameterType="Long">
+		UPDATE BOARD SET VIEWCOUNT = VIEWCOUNT +1 WHERE BNO = #{bno}
+	</update>
 	
 	<update id="modify" parameterType="com.demo.domain.BoardVO">
 		UPDATE BOARD SET TITLE = #{title}, CONTENT = #{content}, UPDATEDDATE = SYSDATE WHERE BNO =#{bno}
