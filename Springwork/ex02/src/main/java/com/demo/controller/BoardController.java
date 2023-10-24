@@ -43,14 +43,14 @@ public class BoardController {
 	
 	//매핑주소   /board/register
 	//글쓰기 폼
-	@GetMapping("/register")
+	@GetMapping("/register") // 리소스 조회
 	public void register() {
 		log.info("called register..."); 
 	}
 	
 	//매핑주소   /board/register
 	//글쓰기저장. jsp파일이 필요없다.
-	@PostMapping("/register")
+	@PostMapping("/register") // 리소스 저장
 	public String register(BoardVO board) {
 		
 		log.info("게시판 입력데이타: " + board); // board.toString()
