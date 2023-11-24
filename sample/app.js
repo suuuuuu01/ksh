@@ -57,3 +57,25 @@ app.get('/write', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+// 게시판 목록
+app.get("/list", (req, res) => {
+    var sql = `select bno, title, `
+    conn.query(sql,function(err, results, field) {
+        if(err) throw err; // 예외처리
+        res.render('list', {lists : results}) // list.ejs
+    }) 
+})
+
+// 게시판 조회
+app.get("/get", (req, res) => {
+    var bno = req.query.bno;
+    var sql = `select * from board where bno = ${bno}`
+    conn.query(sql, function(err, result) {
+        if(err) throw err;
+        res.render("get", {data: result[0]}) // ( , {모델명})
+    })
+})
+
+// 게시판 삭제
+app.get('/delete', )
