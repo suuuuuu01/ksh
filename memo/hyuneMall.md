@@ -72,3 +72,7 @@ sevlet-context.xml 삽입
 
 
 model명과 jsp(화면에 뿌리는 역할)에 쓰이는 이름이 같아야 동작.
+
+AdProductController 
+GlobalControllerAdvice(1차카테고리작업)
+views/comm/category_menu.js(메인페이지 1차카테고리를 뿌려주는 작업)
