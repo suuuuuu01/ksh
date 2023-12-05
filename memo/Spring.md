@@ -201,3 +201,213 @@ master(branch이름) 우클릭 -
 
 import - git - project from git(MVC)
              - project from git and 어쩌공(boot)
+
+
+<리눅스>
+aws 가입, 해외결제 가능 카드준비. 
+
+spring.ppk 키페어
+
+서버 원격접속 프로그램 
+  - putty 다운
+
+
+관리자(root)계정 비밀번호 변경및 로그온
+$  sudo passwd root
+$  1234
+$  1234
+
+$ su root
+$ 1234
+
+exit 사용
+
+ubuntu 계정으로 복귀
+
+cd /
+mkdir download
+
+sudo apt-get update : apt-get에서 관리하는 저장소의 s/w 목록정보를 받아오는 갱신작업.
+sudo apt-get upgrade : 현재 우분투에 설치된 s/w를 업데이트
+sudo apt-get install unzip
+apt, apt-get 차이점
+https://amkorousagi-money.tistory.com/entry/linux-apt-apt-get-%EC%B0%A8%EC%9D%B4-%EC%82%AC%EC%9A%A9%EB%B2%95-%EC%84%A4%EB%AA%85-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%9E%90%EB%8F%99-%EC%84%A4%EC%B9%98-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EC%9E%91%EC%84%B1-%EC%8B%9C-%EB%8D%94-%EC%A2%8B%EC%9D%80-%EA%B2%83
+
+winscd 프로그램으로 이동하고, ubuntu 사용자도 수정 권한주기
+cd /
+chmod 777 download
+
+
+날짜 설정 UTC -> KTS한국표준시간으로 변경하는 명령어
+date
+ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+date
+
+오라클 11g xe
+https://www.oracle.com/database/technologies/xe-prior-release-downloads.html
+
+오라클 설치과정
+https://yunamom.tistory.com/335 ( 기준 )
+https://blog.naver.com/codingspecialist/221326952278 : root 비번변경 작업 참고
+
+zip파일 압축해제 : https://changhoi.kim/posts/linux/zip-command/
+unzip 파일명.zip
+
+cd download
+
+unzip 파일명.zip
+
+sudo apt-get -y install alien libaio1 unixodbc : alien libaio1 unixodbc 소프트웨어3개 다운(-y 모든 사항에 yes)
+
+cd Disk1
+ls
+alien --scripts -d oracle*    // .rmp ->.deb 파일변환
+    -d oracle-xe
+
+-- 오라클 설치
+dpkg --install oracle*.deb
+dpkg로 패키지 설치, 검색, 제거
+: https://skylit.tistory.com/60#google_vignette
+
+cd ~  // ubuntu 사용자의 홈디렉토리로 이동
+
+/etc/init.d/oracle-xe configure
+
+/var/lib/dpkg/info/oracle-xe.postinst: line 114: /sbin/chkconfig: No such file or directory
+You must run '/etc/init.d/oracle-xe configure' as the root user to configure the database.
+
+오라클 환경변수
+/u01/app/oracle/product/11.2.0/xe/bin
+
+
+
+ubuntu:~$ sudo vi ~/.bashrc
+
+#아래 설정을 넣어준다.
+export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe 
+export ORACLE_SID=XE 
+export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh` 
+export ORACLE_BASE=/u01/app/oracle
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH 
+export PATH=$ORACLE_HOME/bin:$PATH
+:w(저장)q(나가기)
+
+복사해서 vi에서 마우스 우클릭하면 붙이기 됨.
+
+ubuntu:~$ source ~/.bashrc
+
+source ~/.bashrc 환경설정 갱신됨.
+
+오라클 접속확인
+sqlplus
+system
+비밀번호1234
+
+CREATE USER spring IDENTIFIED BY spring; 우클릭하면 붙여넣기된다.
+conn spring/spring;
+
+리스너 상태확인
+lsnrctl status
+
+
+FTP 접속 프로그램
+ - 파일질라 클라이언트(private key사용)
+
+
+43.201.66.16
+
+ubuntu
+
+
+- 우분투에 jdk 1.8 설치및 환경변수 설정 : https://chucoding.tistory.com/54
+sudo apt-get install openjdk-8-jdk
+
+
+없는지 확인체크
+$ apt search openjdk
+
+
+
+$ sudo add-apt-repository ppa:openjdk-r/ppa
+$ sudo apt-get update
+$ sudo apt-get install openjdk-8-jdk
+
+
+자바위치 확인
+$ which java
+$ readlink -f /usr/bin/java
+
+
+~$ sudo vi /etc/profile
+
+환경변수 정보
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASS_PATH=$JAVA_HOME/lib:$CLASS_PATH
+
+
+$ source /etc/profile
+
+권한명령
+chmod 777 download
+
+sudo mkdir www
+sudo chmod 777 www
+
+
+pom.xml 가장 하단에 추가
+        <!-- maven build 시 데이터베이스 연결 제외 -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-surefire-plugin</artifactId>
+			    <configuration>
+			        <skipTests>true</skipTests>
+			    </configuration>
+			</plugin>
+            
+프로젝트 우클릭 - run as - Maven build... -  worksapce(프로젝트), goals, profiles 제거, run
+
+
+인바운드 : 외부에서 들어오는 포트 / 아웃바운드 : 나감
+aws 인바운드 규칙 편집 
+/ 인스턴스 종료 (정보 삭제) - 꼭!
+/ 인스턴스 중지나 재부팅 -> 오라클 서비스 중지 ->  
+원격터미널 : Putty
+sqlplus /nolog
+SQL> conn sys/ as sysdba
+SQL> startup (오라클 재시작?)
+
+sudo apt-get install openjdk-8-jdk 
+which java (심볼릭, 바탕화면 바로가기 너낌) -결과-> $ readlink -f /usr/bin/java
+
+$ readlink -f /usr/bin/java --> jdk 가 설치된 경로확인 (like 바탕화면 바로가기에서 파일위치 열기)dk tnlakfuqek tnlsmstlrks,,
+
+usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+
+usr/lib/jvm/java-8-openjdk-amd64/jre... (bin 폴더 기준)
+
+sudo vi /etc/profile (파일) -> 명령모드 돌입..
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASS_PATH=$JAVA_HOME/lib:$CLASS_PATH
+
+esc
+
+source /etc/profile
+
+스프링부트 배포파일 *.jar
+java -jar ezen.jar
+
+세션이 끊어지면 톰캣 구동 종료
+백그라운드 jar파일을 구동. 세션과 상관없이 스프링부트 플젝을 실행상태로 만든다.
+nohup java -jar ezen.jar &
+exit
+
+java -version
+javac -version
+
+aws 인스턴스:9000 dksl tnlakfudnjdy
+
+putty configuration 
+
