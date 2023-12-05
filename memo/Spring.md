@@ -411,3 +411,17 @@ aws 인스턴스:9000 dksl tnlakfudnjdy
 
 putty configuration 
 
+
+---spring AOP---
+https://adjh54.tistory.com/133
+핵심기능, 부가기능
+![Alt text](image-1.png)
+공통된 부가기능을 따로 분리(코드양 축소)
+
+--spring DI--
+https://mangkyu.tistory.com/150 
+
+--스프링 프록시 객체 생성--
+mapper bean 생성해
+service로 mapper 주입, service 소스도 이상 없으면,
+controller로 service 주입
